@@ -6,19 +6,9 @@ env:
    - secure: "zwaj6GzKtRpNfmaKZ9qxuBHVBSrBtQU8WDPpbIj95TM6JAx9N9OBEFqJ1ukXDDkZOO5TegTdKhgIiuBarwkh5+yquUPozGoUP+B2R3n3QA92rPq01ZuCRR7paJY70WUREip1J4VLARBK6hIxS0j63jX9lrUfDNMy8GdRRI1GZ56iG57DalLhOSzeLx+w0lVMvFpVQnPB1ctDJDR/zVm+31HJ47+C6YgjZdA1/pL3ajPXQmWLYdlfqi/Ydh8NFzE1CSAXgkuyGzfDrnXae2VP+/0wXRUxp2R7b6OlH/9OEWvnVYRGZBbtYu8WVX5YGmcBdfAcLakwdg8Tysrdsu+O16ts0Y6u/43ZcRBGUOzc2ZftixEPWfPXRIvhwmkLEhmOal5erochuRKxehZ9XhNC0YlYCm7kfwbuigqFGE66fu0VGF/w/tbfL6RwraawAKYE7qnP8B+T2SGhrNKBTB2EGIAewuarbOZHfyLylY9gWhL74Ws6nWHHlRr+xvTwcv5aGQHDJ8KChky+amn/qQFWyVKTDtoz6pU/tFXUWULa+TSdyV5V63OuBTGUwyIil/CtKdoTx5bbWI2/Qvoh/bIY7uje49VFrKkoUJkvdG7mEgX2U8u7JYCQ9xwttqLzjBum0XultVgiB6zINvHjlUQHpTULCHn4O4FgMhHqFIKrKHg="
 
 before_install:
-  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-addons:
-  coverity_scan:
-    project:
-      name: "johanaschan/queue-ticket-web"
-      description: "Build submitted via Travis CI"
-    notification_email: aschan.johan@gmail.com
-    build_command_prepend: "npm install"
-    build_command: "ng build"
-    branch_pattern: coverity_scan
