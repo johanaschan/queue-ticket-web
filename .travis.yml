@@ -13,7 +13,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - git config --global user.email "aschan.johan@gmail.com"
   - git config --global user.name "johanaschan"
-  - git remote set-url origin "https://${GH_TOKEN}@github.com/johanaschan/queue-ticket-web"
+  - git remote set-url origin "https://${GH_TOKEN}@github.com/johanaschan/queue-ticket-web.git"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
