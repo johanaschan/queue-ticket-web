@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johanaschan/queue-ticket-web"
+    "url": "https://github.com/johanaschan/queue-ticket-web.git"
   },
   "angular-cli": {},
   "scripts": {
