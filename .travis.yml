@@ -20,5 +20,5 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: aschan.johan@gmail.com
     build_command_prepend: "npm install"
-    build_command:   "ng build"
+    build_command: "ng build"
     branch_pattern: coverity_scan
