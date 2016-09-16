@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/johanaschan/queue-ticket-web.svg?branch=master)](https://travis-ci.org/johanaschan/queue-ticket-web)
 [![codecov](https://codecov.io/gh/johanaschan/queue-ticket-web/branch/master/graph/badge.svg)](https://codecov.io/gh/johanaschan/queue-ticket-web)
+[![Dependency Status](https://www.versioneye.com/user/projects/57dbe00dbf3e4c0034e21bc1/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57dbe00dbf3e4c0034e21bc1)
 
 # QueueTicketWeb
 
