@@ -23,4 +23,5 @@ after_success:
   - git config --global user.name "Travis"
   - git remote set-url origin "git@github.com:johanaschan/queue-ticket-web.git"
   - git pull origin gh-pages:gh-pages
+  - git checkout .
   - ng github-pages:deploy
