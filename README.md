@@ -4,9 +4,7 @@
 
 # QueueTicketWeb
 
-https://johanaschan.github.io/queue-ticket-web/
-
-Webapp for QueueTicket communicating with [queue-ticket-api](https://github.com/johanaschan/queue-ticket-api).
+Webapp for QueueTicket communicating with [queue-ticket-api](https://github.com/johanaschan/queue-ticket-api), deployed at [Github Pages](https://johanaschan.github.io/queue-ticket-web/).
 This project was generated with [angular-cli](https://github.com/angular/angular-cli).
 
 ## Development server
