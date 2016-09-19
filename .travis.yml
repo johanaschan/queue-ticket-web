@@ -1,21 +1,19 @@
 language: node_js
 node_js:
-  - "4"
-
+- '4'
 env:
   global:
-   - secure: "OWaV+iHKyMkrJtvgedGm2nk4HmhfvAXEtIqWFgRLWBVm7eC0pJRnLoGUFNLh6MYdWuVrqR3h+cnBdGB4SDmPsZJFUDTNzlvuZGxZJBOIqZx4Shue9Cu1+aCHb6g1Ea8Qf5ioBZaahUAOJbFcsB9ViNEjxlbOR2pOKUb+mDYMIkCDWLrR+mvb6toPpKEu+u+eDGAY78Ek13sib/gR3uSHFygSQOhXfIkZ4tel0/Eoy4WWyZ1Ds5VC1uKPNrSS1LfBeI2JaOmLt7Nv9DnQIB1gKIV7pCzaJWAn8gQoKU5I6/YJiT57JXMjcU7s+6zyOMwGGMxXJy/XlnEh8cTBdHvAu8Vszg2eHP+e7WKUTQXIOvj89tJWjyLdx/q0o7Q4KkfJ7GvMFa2Zq5EoyPi0Hc6tCh0Pffx46p4DzPPDsQsy90XZVBiKVAI3eFdpbPGMi3Sye70JbA9aLpnKd5Vqoyoy6pzRMBznHo+GXULADAZbMKK+d5cEBOVGBQVniTXA3OPtv/OgQj1FhKnB6X12RwxRUMkwitVnrxEjRU7hKy/FEax7Bm0NPrpJaFq8uY0IEAk1O3HyAyEuQGk6+QNj6ETqYg5cA77zgsUN0NmwMwUjkp/drA5uiDPGN0uhdGRjVL+i0fklPozcAObgmD8wsBExwsVkIf6ea++QUXPGltwbHzo="
-
+  - secure: OWaV+iHKyMkrJtvgedGm2nk4HmhfvAXEtIqWFgRLWBVm7eC0pJRnLoGUFNLh6MYdWuVrqR3h+cnBdGB4SDmPsZJFUDTNzlvuZGxZJBOIqZx4Shue9Cu1+aCHb6g1Ea8Qf5ioBZaahUAOJbFcsB9ViNEjxlbOR2pOKUb+mDYMIkCDWLrR+mvb6toPpKEu+u+eDGAY78Ek13sib/gR3uSHFygSQOhXfIkZ4tel0/Eoy4WWyZ1Ds5VC1uKPNrSS1LfBeI2JaOmLt7Nv9DnQIB1gKIV7pCzaJWAn8gQoKU5I6/YJiT57JXMjcU7s+6zyOMwGGMxXJy/XlnEh8cTBdHvAu8Vszg2eHP+e7WKUTQXIOvj89tJWjyLdx/q0o7Q4KkfJ7GvMFa2Zq5EoyPi0Hc6tCh0Pffx46p4DzPPDsQsy90XZVBiKVAI3eFdpbPGMi3Sye70JbA9aLpnKd5Vqoyoy6pzRMBznHo+GXULADAZbMKK+d5cEBOVGBQVniTXA3OPtv/OgQj1FhKnB6X12RwxRUMkwitVnrxEjRU7hKy/FEax7Bm0NPrpJaFq8uY0IEAk1O3HyAyEuQGk6+QNj6ETqYg5cA77zgsUN0NmwMwUjkp/drA5uiDPGN0uhdGRjVL+i0fklPozcAObgmD8wsBExwsVkIf6ea++QUXPGltwbHzo=
 before_install:
-  - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - git init
-  - git config --global user.email "aschan.johan@gmail.com"
-  - git config --global user.name "johanaschan"
-  - git remote set-url origin "https://github.com/johanaschan/queue-ticket-web.git"
-  - echo ${GH_TOKEN}
+- openssl aes-256-cbc -K $encrypted_d81357c35ba2_key -iv $encrypted_d81357c35ba2_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
+- if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - ng github-pages:deploy --gh-token ${GH_TOKEN}
+- bash <(curl -s https://codecov.io/bash)
+- git config --global user.email "travis@travis.com"
+- git config --global user.name "Travis"
+- git remote set-url origin "git@github.com:johanaschan/queue-ticket-web.git"
+- ng github-pages:deploy
