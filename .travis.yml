@@ -15,7 +15,7 @@ before_install:
   - git config --global user.email "aschan.johan@gmail.com"
   - git config --global user.name "johanaschan"
   - git remote set-url origin "https://${GH_TOKEN}@github.com/johanaschan/queue-ticket-web.git"
-
+  - echo ${GH_TOKEN}
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - ng github-pages:deploy
