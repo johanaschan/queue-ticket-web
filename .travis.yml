@@ -19,8 +19,8 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 deploy_rsa
   - ssh-add deploy_rsa
-  - git config --global push.default tracking
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis"
   - git remote set-url origin "git@github.com:johanaschan/queue-ticket-web.git"
+  - git push --delete origin gh-pages
   - ng github-pages:deploy
