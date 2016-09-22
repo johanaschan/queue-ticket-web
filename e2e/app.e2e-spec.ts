@@ -9,6 +9,6 @@ describe('queue-ticket-web App', function() {
 
   it('should display header QueueTicket', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('QueueTicket');
+    expect(page.getHeaderText()).toEqual('QueueTicket');
   });
 });
