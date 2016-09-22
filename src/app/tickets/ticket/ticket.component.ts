@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {TicketService, Ticket} from '../shared';
 
 @Component({
@@ -7,7 +7,7 @@ import {TicketService, Ticket} from '../shared';
   styleUrls: ['ticket.component.css'],
   providers: [TicketService]
 })
-export class TicketComponent implements OnInit {
+export class TicketComponent {
 
   private newTicket: Ticket;
   private currentTicket: Ticket;
@@ -32,10 +32,6 @@ export class TicketComponent implements OnInit {
     this.ticketService.newTicket().subscribe(
       newTicket => this.newTicket = newTicket,
       error => this.errorMessage = <any>error);
-  }
-
-  ngOnInit(): void {
-    this.getCurrentTicket();
   }
 
 }

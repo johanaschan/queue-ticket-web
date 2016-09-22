@@ -48,7 +48,7 @@ describe('TicketComponent', () => {
     expect(compiled.querySelector('.current-ticket h4').textContent).toBe('Current ticket: ' + queueTicketNumber);
   }));
 
-  it('should raise number', async(() => {
+  it('should raise ticket number', async(() => {
     const fixture = TestBed.createComponent(TicketComponent);
     fixture.debugElement.query(By.css(('.current-ticket button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
