@@ -9,8 +9,8 @@ import {TicketService, Ticket} from '../shared';
 })
 export class TicketComponent implements OnInit {
 
-  currentTicket: Ticket;
-  errorMessage: string;
+  private currentTicket: Ticket;
+  private errorMessage: string;
 
   constructor(private ticketService: TicketService) {
   }

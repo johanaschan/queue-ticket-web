@@ -7,8 +7,8 @@ describe('queue-ticket-web App', function() {
     page = new QueueTicketWebPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display header QueueTicket', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('QueueTicket');
   });
 });
