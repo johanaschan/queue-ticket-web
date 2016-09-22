@@ -21,6 +21,12 @@ export class TicketComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
+  nextTicket(): void {
+    this.ticketService.nextTicket().subscribe(
+      response => this.getCurrentTicket(),
+      error => this.errorMessage = error);
+  }
+
   ngOnInit(): void {
     this.getCurrentTicket();
   }
