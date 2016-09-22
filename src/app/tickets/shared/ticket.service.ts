@@ -7,7 +7,8 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class TicketService {
 
-  private queueTicketUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
+  private readonly queueTicketUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
+  private readonly options = new RequestOptions({ headers:  new Headers({ 'Content-Type': 'application/json' }) });
 
   constructor(private http: Http) {
   }
@@ -19,10 +20,14 @@ export class TicketService {
   }
 
   nextTicket(): Observable<any>  {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
-    return this.http.post(this.queueTicketUrl + '/next', options)
+    return this.http.post(this.queueTicketUrl + '/next', this.options)
       .map(response => {})
+      .catch(this.handleError);
+  }
+
+  newTicket(): Observable<Ticket>  {
+    return this.http.get(this.queueTicketUrl + '/new')
+      .map(this.extractData)
       .catch(this.handleError);
   }
 

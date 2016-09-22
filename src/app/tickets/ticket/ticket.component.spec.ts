@@ -4,16 +4,19 @@ import {Ticket, TicketService} from '../shared';
 import {Observable} from 'rxjs';
 import {By} from '@angular/platform-browser';
 
-const QUEUE_TICKET_NUMBER = 100;
+const queueTicketNumber = 100;
 
 class TicketServiceStub {
-  private queueTickerNumber = QUEUE_TICKET_NUMBER;
+  private queueTickerNumber = queueTicketNumber;
   getCurrentTicket(): Observable<Ticket> {
     return Observable.from([new Ticket(1, this.queueTickerNumber)]);
   }
   nextTicket(): Observable<any> {
-    this.queueTickerNumber = QUEUE_TICKET_NUMBER + 1;
+    this.queueTickerNumber = queueTicketNumber + 1;
     return Observable.from([{}]);
+  }
+  newTicket(): Observable<any> {
+    return Observable.from([new Ticket(1, 500)]);
   }
 }
 
@@ -38,18 +41,26 @@ describe('TicketComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  it('should render number in a h4 tag', async(() => {
+  it('should render current ticket number in a h4 tag', async(() => {
     const fixture = TestBed.createComponent(TicketComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toContain(QUEUE_TICKET_NUMBER);
+    expect(compiled.querySelector('.current-ticket h4').textContent).toBe('Current ticket: ' + queueTicketNumber);
   }));
 
   it('should raise number', async(() => {
     const fixture = TestBed.createComponent(TicketComponent);
-    fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
+    fixture.debugElement.query(By.css(('.current-ticket button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toContain(QUEUE_TICKET_NUMBER + 1);
+    expect(compiled.querySelector('.current-ticket h4').textContent).toBe('Current ticket: ' + (queueTicketNumber + 1));
+  }));
+
+  it('should render new ticket number in a h4 tag', async(() => {
+    const fixture = TestBed.createComponent(TicketComponent);
+    fixture.debugElement.query(By.css(('.new-ticket button'))).triggerEventHandler('click', null);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.new-ticket h4').textContent).toBe('New ticket: ' + 500);
   }));
 });

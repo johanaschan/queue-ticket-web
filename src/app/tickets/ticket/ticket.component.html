@@ -1,7 +1,11 @@
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-xs-6 current-ticket">
     <h4 *ngIf="currentTicket">Current ticket: {{currentTicket.number}}</h4>
     <button (click)="nextTicket()" class="btn btn-primary">Next ticket</button>
-    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
   </div>
+  <div class="col-xs-6 new-ticket">
+    <h4 *ngIf="newTicket">New ticket: {{newTicket.number}}</h4>
+    <button (click)="createNewTicket()" class="btn btn-info">New ticket</button>
+  </div>
+  <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 </div>

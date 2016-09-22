@@ -9,6 +9,7 @@ import {TicketService, Ticket} from '../shared';
 })
 export class TicketComponent implements OnInit {
 
+  private newTicket: Ticket;
   private currentTicket: Ticket;
   private errorMessage: string;
 
@@ -24,7 +25,13 @@ export class TicketComponent implements OnInit {
   nextTicket(): void {
     this.ticketService.nextTicket().subscribe(
       response => this.getCurrentTicket(),
-      error => this.errorMessage = error);
+      error => this.errorMessage = <any>error);
+  }
+
+  createNewTicket(): void {
+    this.ticketService.newTicket().subscribe(
+      newTicket => this.newTicket = newTicket,
+      error => this.errorMessage = <any>error);
   }
 
   ngOnInit(): void {
