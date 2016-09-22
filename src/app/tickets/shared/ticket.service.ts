@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
 export class TicketService {
 
   private readonly queueTicketUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
-  private readonly options = new RequestOptions({ headers:  new Headers({ 'Content-Type': 'application/json' }) });
 
   constructor(private http: Http) {
   }
@@ -20,7 +19,7 @@ export class TicketService {
   }
 
   nextTicket(): Observable<any>  {
-    return this.http.post(this.queueTicketUrl + '/next', this.options)
+    return this.http.post(this.queueTicketUrl + '/next', null)
       .map(response => {})
       .catch(this.handleError);
   }
@@ -28,6 +27,12 @@ export class TicketService {
   newTicket(): Observable<Ticket>  {
     return this.http.get(this.queueTicketUrl + '/new')
       .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  resetTickets(): Observable<Ticket>  {
+    return this.http.delete(this.queueTicketUrl + '/reset')
+      .map(response => {})
       .catch(this.handleError);
   }
 
