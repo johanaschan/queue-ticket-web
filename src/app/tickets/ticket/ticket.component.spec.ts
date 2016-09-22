@@ -16,7 +16,7 @@ class TicketServiceStub {
     return Observable.from([{}]);
   }
   newTicket(): Observable<any> {
-    return Observable.from([new Ticket(1, 500)]);
+    return Observable.from([new Ticket(1, queueTicketNumber * 5)]);
   }
 }
 
@@ -61,6 +61,6 @@ describe('TicketComponent', () => {
     fixture.debugElement.query(By.css(('.new-ticket button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.new-ticket h4').textContent).toBe('New ticket: ' + 500);
+    expect(compiled.querySelector('.new-ticket h4').textContent).toBe('New ticket: ' + queueTicketNumber * 5);
   }));
 });
