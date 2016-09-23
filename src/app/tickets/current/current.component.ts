@@ -14,14 +14,14 @@ export class CurrentComponent implements OnInit {
   constructor(private ticketService: TicketService) {
   }
 
+  ngOnInit(): void {
+    setInterval(() => this.getCurrentTicket(), 1000);
+  }
+
   getCurrentTicket(): void {
     this.ticketService.getCurrentTicket().subscribe(
       currentTicket => this.currentTicket = currentTicket,
       error => this.currentTicket = null);
-  }
-
-  ngOnInit(): void {
-    setInterval(() => this.getCurrentTicket(), 1000);
   }
 
 }

@@ -1,4 +1,4 @@
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, async, fakeAsync, tick, discardPeriodicTasks} from '@angular/core/testing';
 import {CurrentComponent} from './';
 import {Ticket, TicketService} from '../shared';
 import {Observable} from 'rxjs';
@@ -7,10 +7,8 @@ const queueTicketNumber = 100;
 
 class TicketServiceStub {
 
-  private queueTickerNumber = queueTicketNumber;
-
   getCurrentTicket(): Observable<Ticket> {
-    return Observable.from([new Ticket(1, this.queueTickerNumber)]);
+    return Observable.from([new Ticket(1, queueTicketNumber)]);
   }
 
 }
@@ -36,11 +34,14 @@ describe('CurrentComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  // it('should render current ticket number in a h4 tag', async(() => {
-  //   const fixture = TestBed.createComponent(CurrentComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h4').textContent).toEqual('Current ticket: ' + queueTicketNumber);
-  // }));
+  it('should render current ticket number in a h4 tag', fakeAsync(() => {
+    const fixture = TestBed.createComponent(CurrentComponent);
+    fixture.detectChanges();
+    tick(1000);
+    fixture.detectChanges();
+    discardPeriodicTasks();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h4').textContent).toEqual('Current ticket: ' + queueTicketNumber);
+  }));
 
 });
