@@ -13,7 +13,7 @@ export class TicketService {
   }
 
   getCurrentTicket(): Observable<Ticket> {
-    return this.http.get(this.queueTicketApiUrl + '/current-ticket')
+    return this.http.get(this.queueTicketApiUrl + '/current')
       .map(this.extractData)
       .catch(this.handleError);
   }
