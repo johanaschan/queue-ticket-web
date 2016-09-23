@@ -20,8 +20,7 @@ export class TicketService {
 
   nextTicket(): Observable<any> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
-      .map(response => {
-      })
+      .map(response => {})
       .catch(this.handleError);
   }
 
@@ -33,8 +32,7 @@ export class TicketService {
 
   resetTickets(): Observable<Ticket> {
     return this.http.delete(this.queueTicketApiUrl + '/reset')
-      .map(response => {
-      })
+      .map(response => {})
       .catch(this.handleError);
   }
 
