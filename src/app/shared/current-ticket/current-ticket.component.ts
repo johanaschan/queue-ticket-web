@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Ticket, TicketService} from '../shared';
+import {Ticket, TicketService} from '../';
 
 @Component({
-  selector: 'app-current',
-  templateUrl: 'current.component.html',
-  styleUrls: ['current.component.css'],
+  selector: 'app-current-ticket',
+  templateUrl: 'current-ticket.component.html',
+  styleUrls: ['current-ticket.component.css'],
   providers: [TicketService]
 })
-export class CurrentComponent implements OnInit {
+export class CurrentTicketComponent implements OnInit {
 
   private currentTicket: Ticket;
 

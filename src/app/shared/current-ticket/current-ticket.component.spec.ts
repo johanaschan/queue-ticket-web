@@ -1,6 +1,6 @@
 import {TestBed, async, fakeAsync, tick, discardPeriodicTasks} from '@angular/core/testing';
-import {CurrentComponent} from './';
-import {Ticket, TicketService} from '../shared';
+import {CurrentTicketComponent} from './';
+import {Ticket, TicketService} from '../';
 import {Observable} from 'rxjs';
 
 const queueTicketNumber = 100;
@@ -13,13 +13,13 @@ class TicketServiceStub {
 
 }
 
-describe('CurrentComponent', () => {
+describe('CurrentTicketComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        CurrentComponent
+        CurrentTicketComponent
       ]
-    }).overrideComponent(CurrentComponent, {
+    }).overrideComponent(CurrentTicketComponent, {
       set: {
         providers: [
           {provide: TicketService, useClass: TicketServiceStub}
@@ -29,13 +29,13 @@ describe('CurrentComponent', () => {
   });
 
   it('should create the component', async(() => {
-    const fixture = TestBed.createComponent(CurrentComponent);
+    const fixture = TestBed.createComponent(CurrentTicketComponent);
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   }));
 
-  it('should render current ticket number in a h4 tag', fakeAsync(() => {
-    const fixture = TestBed.createComponent(CurrentComponent);
+  it('should render current-ticket ticket number in a h4 tag', fakeAsync(() => {
+    const fixture = TestBed.createComponent(CurrentTicketComponent);
     fixture.detectChanges();
     tick(1000);
     fixture.detectChanges();

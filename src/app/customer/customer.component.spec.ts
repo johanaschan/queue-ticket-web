@@ -15,7 +15,7 @@ class TicketServiceStub {
 }
 
 
-@Component({selector: 'app-current', template: ''})
+@Component({selector: 'app-current-ticket', template: ''})
 class CurrentStubComponent {}
 
 
