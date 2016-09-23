@@ -7,31 +7,31 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class TicketService {
 
-  private readonly queueTicketUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
+  private readonly queueTicketApiUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
 
   constructor(private http: Http) {
   }
 
   getCurrentTicket(): Observable<Ticket> {
-    return this.http.get(this.queueTicketUrl + '/current')
+    return this.http.get(this.queueTicketApiUrl + '/current')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   nextTicket(): Observable<any>  {
-    return this.http.post(this.queueTicketUrl + '/next', null)
+    return this.http.post(this.queueTicketApiUrl + '/next', null)
       .map(response => {})
       .catch(this.handleError);
   }
 
   newTicket(): Observable<Ticket>  {
-    return this.http.get(this.queueTicketUrl + '/new')
+    return this.http.get(this.queueTicketApiUrl + '/new')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   resetTickets(): Observable<Ticket>  {
-    return this.http.delete(this.queueTicketUrl + '/reset')
+    return this.http.delete(this.queueTicketApiUrl + '/reset')
       .map(response => {})
       .catch(this.handleError);
   }

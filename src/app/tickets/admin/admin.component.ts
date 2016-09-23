@@ -2,14 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {TicketService, Ticket} from '../shared';
 
 @Component({
-  selector: 'app-ticket',
-  templateUrl: 'ticket.component.html',
-  styleUrls: ['ticket.component.css'],
+  selector: 'app-admin',
+  templateUrl: 'admin.component.html',
+  styleUrls: ['admin.component.css'],
   providers: [TicketService]
 })
-export class TicketComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
-  private newTicket: Ticket;
   private currentTicket: Ticket;
   private errorMessage: string;
 
@@ -19,7 +18,10 @@ export class TicketComponent implements OnInit {
   getCurrentTicket(): void {
     this.ticketService.getCurrentTicket().subscribe(
       currentTicket => this.currentTicket = currentTicket,
-      error => this.errorMessage = <any>error);
+      error => {
+        this.currentTicket = null;
+        this.errorMessage = <any>error
+      });
   }
 
   nextTicket(): void {
@@ -28,9 +30,9 @@ export class TicketComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  createNewTicket(): void {
-    this.ticketService.newTicket().subscribe(
-      newTicket => this.newTicket = newTicket,
+  resetTickets(): void {
+    this.ticketService.resetTickets().subscribe(
+      response => this.getCurrentTicket(),
       error => this.errorMessage = <any>error);
   }
 

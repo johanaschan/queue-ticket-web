@@ -2,15 +2,19 @@ import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {Component} from '@angular/core';
 
-@Component({selector: 'app-ticket', template: ''})
-class TicketStubComponent {}
+@Component({selector: 'app-admin', template: ''})
+class AdminStubComponent {}
+
+@Component({selector: 'app-customer', template: ''})
+class CustomerStubComponent {}
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TicketStubComponent
+        AdminStubComponent,
+        CustomerStubComponent
       ]
     });
   });
@@ -25,6 +29,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('QueueTicket');
+    expect(compiled.querySelector('h1').textContent).toEqual('QueueTicket');
   }));
 });

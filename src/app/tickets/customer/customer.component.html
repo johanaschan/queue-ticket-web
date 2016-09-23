@@ -1,0 +1,5 @@
+<h2>Customer</h2>
+<h4 *ngIf="newTicket">New ticket: {{newTicket.number}}</h4>
+<button (click)="createNewTicket()" class="btn btn-info">New ticket</button>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+
