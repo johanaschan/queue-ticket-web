@@ -34,7 +34,7 @@ describe('CurrentTicketComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  it('should render current-ticket ticket number in a h4 tag', fakeAsync(() => {
+  it('should render current ticket number in a h4 tag', fakeAsync(() => {
     const fixture = TestBed.createComponent(CurrentTicketComponent);
     fixture.detectChanges();
     tick(1000);
