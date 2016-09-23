@@ -3,6 +3,7 @@ import {CustomerComponent} from './';
 import {Ticket, TicketService} from '../shared';
 import {Observable} from 'rxjs';
 import {By} from '@angular/platform-browser';
+import {Component} from '@angular/core';
 
 const queueTicketNumber = 100;
 
@@ -13,11 +14,17 @@ class TicketServiceStub {
   }
 }
 
+
+@Component({selector: 'app-current', template: ''})
+class CurrentStubComponent {}
+
+
 describe('CustomerComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        CustomerComponent
+        CustomerComponent,
+        CurrentStubComponent
       ]
     }).overrideComponent(CustomerComponent, {
       set: {

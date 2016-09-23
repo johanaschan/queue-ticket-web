@@ -18,21 +18,23 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  nextTicket(): Observable<any>  {
+  nextTicket(): Observable<any> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
-      .map(response => {})
+      .map(response => {
+      })
       .catch(this.handleError);
   }
 
-  newTicket(): Observable<Ticket>  {
+  newTicket(): Observable<Ticket> {
     return this.http.get(this.queueTicketApiUrl + '/new')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  resetTickets(): Observable<Ticket>  {
+  resetTickets(): Observable<Ticket> {
     return this.http.delete(this.queueTicketApiUrl + '/reset')
-      .map(response => {})
+      .map(response => {
+      })
       .catch(this.handleError);
   }
 

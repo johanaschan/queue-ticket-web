@@ -1,5 +1,5 @@
 <h2>Admin</h2>
-<h4 *ngIf="currentTicket">Current ticket: {{currentTicket.number}}</h4>
+<app-current></app-current>
 <button (click)="nextTicket()" class="btn btn-primary next-ticket">Next ticket</button>
 <button (click)="resetTickets()" class="btn btn-danger reset-tickets">Reset tickets</button>
 <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
