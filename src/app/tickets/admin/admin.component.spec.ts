@@ -65,6 +65,6 @@ describe('AdminComponent', () => {
     fixture.debugElement.query(By.css(('button.reset-tickets'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toBeNull();
+    expect(compiled.querySelector('h4').textContent).toEqual('Current ticket: 0');
   }));
 });

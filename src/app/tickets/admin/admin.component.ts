@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
       currentTicket => this.currentTicket = currentTicket,
       error => {
         this.currentTicket = null;
-        this.errorMessage = <any>error
+        this.errorMessage = <any>error;
       });
   }
 

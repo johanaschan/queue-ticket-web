@@ -7,10 +7,9 @@ import {By} from '@angular/platform-browser';
 const queueTicketNumber = 100;
 
 class TicketServiceStub {
-  private queueTickerNumber = queueTicketNumber;
 
   newTicket(): Observable<any> {
-    return Observable.from([new Ticket(1, queueTicketNumber * 5)]);
+    return Observable.from([new Ticket(1, queueTicketNumber)]);
   }
 }
 
@@ -40,6 +39,6 @@ describe('CustomerComponent', () => {
     fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toEqual('New ticket: ' + queueTicketNumber * 5);
+    expect(compiled.querySelector('h4').textContent).toEqual('New ticket: ' + queueTicketNumber);
   }));
 });
