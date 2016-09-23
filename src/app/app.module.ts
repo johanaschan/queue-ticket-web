@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AdminComponent } from './tickets/admin';
-import { CustomerComponent } from './tickets/customer';
-import { CurrentComponent } from './tickets/current';
+import { AdminComponent } from './admin';
+import { CustomerComponent } from './customer';
+import { CurrentComponent } from './current';
 
 @NgModule({
   declarations: [

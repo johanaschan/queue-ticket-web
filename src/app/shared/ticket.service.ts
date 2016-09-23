@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import '../../shared';
+import './';
 import {Ticket} from './ticket';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';

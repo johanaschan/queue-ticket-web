@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TicketService, Ticket} from '../shared';
+import {Ticket, TicketService} from '../shared';
 
 @Component({
   selector: 'app-current',
