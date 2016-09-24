@@ -5,8 +5,7 @@ import {Ticket, TicketService} from '../';
 @Component({
   selector: 'app-current-ticket',
   templateUrl: 'current-ticket.component.html',
-  styleUrls: ['current-ticket.component.css'],
-  providers: [TicketService]
+  styleUrls: ['current-ticket.component.css']
 })
 export class CurrentTicketComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class CurrentTicketComponent implements OnInit {
   }
 
   getCurrentTicket(): void {
-    this.ticketService.getCurrentTicket().subscribe(
+    this.ticketService.currentTicket().subscribe(
       currentTicket => this.currentTicket = currentTicket,
       error => this.currentTicket = null);
   }

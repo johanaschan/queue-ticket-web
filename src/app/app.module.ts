@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { CurrentTicketComponent } from './shared/current-ticket';
+import { LocalStorageService, TicketService } from './shared';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,10 @@ import { CurrentTicketComponent } from './shared/current-ticket';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    LocalStorageService,
+    TicketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

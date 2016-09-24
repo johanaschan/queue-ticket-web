@@ -11,12 +11,12 @@ class TicketServiceStub {
 
   nextTicket(): Observable<any> {
     queueTicketNumber += 1;
-    return Observable.from([{}]);
+    return Observable.of({});
   }
 
   resetTickets(): Observable<any> {
     queueTicketNumber = 0;
-    return Observable.from([{}]);
+    return Observable.of({});
   }
 }
 
@@ -31,13 +31,10 @@ describe('AdminComponent', () => {
       declarations: [
         AdminComponent,
         CurrentStubComponent
+      ],
+      providers: [
+        {provide: TicketService, useClass: TicketServiceStub}
       ]
-    }).overrideComponent(AdminComponent, {
-      set: {
-        providers: [
-          {provide: TicketService, useClass: TicketServiceStub}
-        ]
-      }
     });
   });
 

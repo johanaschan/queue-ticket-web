@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
-import './';
-import {Ticket} from './ticket';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
+
+import {Ticket} from './';
+import {LocalStorageService} from './local-storage.service';
 
 @Injectable()
 export class TicketService {
 
   private readonly queueTicketApiUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private localStorageService: LocalStorageService) {
   }
 
-  getCurrentTicket(): Observable<Ticket> {
+  currentTicket(): Observable<Ticket> {
     return this.http.get(this.queueTicketApiUrl + '/current')
       .map(this.extractData)
       .catch(this.handleError);
@@ -20,19 +21,28 @@ export class TicketService {
 
   nextTicket(): Observable<any> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
-      .map(response => {})
       .catch(this.handleError);
+  }
+
+  customerTicket(): Ticket {
+    return this.localStorageService.getCustomerTicket();
   }
 
   newTicket(): Observable<Ticket> {
     return this.http.get(this.queueTicketApiUrl + '/new')
       .map(this.extractData)
+      .do(newTicket => this.localStorageService.setCustomerTicket(newTicket))
+      .catch(this.handleError);
+  }
+
+  dropTicket(ticketNumber: any): Observable<any> {
+    return this.http.delete(this.queueTicketApiUrl + '/drop/' + ticketNumber)
+      .do(newTicket => this.localStorageService.setCustomerTicket(null))
       .catch(this.handleError);
   }
 
   resetTickets(): Observable<Ticket> {
     return this.http.delete(this.queueTicketApiUrl + '/reset')
-      .map(response => {})
       .catch(this.handleError);
   }
 

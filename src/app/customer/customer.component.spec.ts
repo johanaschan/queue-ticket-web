@@ -9,8 +9,12 @@ const queueTicketNumber = 100;
 
 class TicketServiceStub {
 
+  customerTicket(): Ticket {
+    return null;
+  }
+
   newTicket(): Observable<any> {
-    return Observable.from([new Ticket(1, queueTicketNumber)]);
+    return Observable.of(new Ticket(1, queueTicketNumber));
   }
 }
 
@@ -25,13 +29,10 @@ describe('CustomerComponent', () => {
       declarations: [
         CustomerComponent,
         CurrentStubComponent
+      ],
+      providers: [
+        {provide: TicketService, useClass: TicketServiceStub}
       ]
-    }).overrideComponent(CustomerComponent, {
-      set: {
-        providers: [
-          {provide: TicketService, useClass: TicketServiceStub}
-        ]
-      }
     });
   });
 
@@ -43,9 +44,11 @@ describe('CustomerComponent', () => {
 
   it('should render new ticket number in a h4 tag', async(() => {
     const fixture = TestBed.createComponent(CustomerComponent);
+    fixture.detectChanges();
     fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toEqual('New ticket: ' + queueTicketNumber);
+    expect(compiled.querySelector('h4').textContent).toEqual('Ticket: ' + queueTicketNumber);
+    expect(compiled.querySelector('button').textContent).toEqual('Drop ticket');
   }));
 });

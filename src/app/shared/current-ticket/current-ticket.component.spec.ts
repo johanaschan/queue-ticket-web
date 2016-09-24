@@ -7,8 +7,8 @@ const queueTicketNumber = 100;
 
 class TicketServiceStub {
 
-  getCurrentTicket(): Observable<Ticket> {
-    return Observable.from([new Ticket(1, queueTicketNumber)]);
+  currentTicket(): Observable<Ticket> {
+    return Observable.of(new Ticket(1, queueTicketNumber));
   }
 
 }
@@ -18,13 +18,10 @@ describe('CurrentTicketComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         CurrentTicketComponent
+      ],
+      providers: [
+        {provide: TicketService, useClass: TicketServiceStub}
       ]
-    }).overrideComponent(CurrentTicketComponent, {
-      set: {
-        providers: [
-          {provide: TicketService, useClass: TicketServiceStub}
-        ]
-      }
     });
   });
 

@@ -5,8 +5,7 @@ import {TicketService} from '../shared';
 @Component({
   selector: 'app-admin',
   templateUrl: 'admin.component.html',
-  styleUrls: ['admin.component.css'],
-  providers: [TicketService]
+  styleUrls: ['admin.component.css']
 })
 export class AdminComponent {
 
