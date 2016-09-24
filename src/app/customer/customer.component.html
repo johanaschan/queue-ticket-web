@@ -1,6 +1,6 @@
 <h2>Customer</h2>
 <app-current-ticket></app-current-ticket>
-<h4 *ngIf="ticket">Ticket: {{ticket.number}}</h4>
+<h4 *ngIf="ticket">Your ticket: {{ticket.number}}</h4>
 <button *ngIf="!ticket" (click)="newTicket()" class="btn btn-info">New ticket</button>
 <button *ngIf="ticket" (click)="dropTicket()" class="btn btn-danger">Drop ticket</button>
 <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
