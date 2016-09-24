@@ -48,7 +48,7 @@ describe('CustomerComponent', () => {
     fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toEqual('Ticket: ' + queueTicketNumber);
+    expect(compiled.querySelector('h4').textContent).toEqual('Your ticket: ' + queueTicketNumber);
     expect(compiled.querySelector('button').textContent).toEqual('Drop ticket');
   }));
 });
