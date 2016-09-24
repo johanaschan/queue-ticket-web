@@ -42,7 +42,7 @@ describe('CustomerComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  it('should render new ticket number in a h4 tag', async(() => {
+  it('should render new ticket number in a h4 tag and drop ticket button', async(() => {
     const fixture = TestBed.createComponent(CustomerComponent);
     fixture.detectChanges();
     fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
