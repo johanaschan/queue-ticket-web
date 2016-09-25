@@ -8,6 +8,7 @@ import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { CurrentTicketComponent } from './shared/current-ticket';
 import { LocalStorageService, TicketService } from './shared';
+import { routing, appRoutingProviders }  from './app.routing';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,13 @@ import { LocalStorageService, TicketService } from './shared';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [
     LocalStorageService,
-    TicketService
+    TicketService,
+    appRoutingProviders
   ],
   bootstrap: [AppComponent]
 })

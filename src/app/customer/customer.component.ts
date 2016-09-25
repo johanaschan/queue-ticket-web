@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Ticket, TicketService} from '../shared';
+import {Ticket, TicketService, TicketStatus} from '../shared';
 
 @Component({
   selector: 'app-customer',
@@ -10,6 +10,7 @@ import {Ticket, TicketService} from '../shared';
 export class CustomerComponent implements OnInit {
 
   private ticket: Ticket;
+  private ticketStatus: TicketStatus;
   private errorMessage: string;
 
   constructor(private ticketService: TicketService) {
@@ -28,6 +29,12 @@ export class CustomerComponent implements OnInit {
   dropTicket(): void {
     this.ticketService.dropTicket(this.ticket.number).subscribe(
       response => this.ticket = null,
+      error => this.errorMessage = <any>error);
+  }
+
+  getTicketStatus(): void {
+    this.ticketService.ticketStatus(this.ticket.number).subscribe(
+      ticketStatus => this.ticketStatus = ticketStatus,
       error => this.errorMessage = <any>error);
   }
 

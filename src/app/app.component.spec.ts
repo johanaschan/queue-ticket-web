@@ -8,13 +8,18 @@ class AdminStubComponent {}
 @Component({selector: 'app-customer', template: ''})
 class CustomerStubComponent {}
 
+// tslint:disable-next-line:component-selector-prefix
+@Component({selector: 'router-outlet', template: ''})
+class RouterOutletStubComponent {}
+
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         AdminStubComponent,
-        CustomerStubComponent
+        CustomerStubComponent,
+        RouterOutletStubComponent
       ]
     });
   });

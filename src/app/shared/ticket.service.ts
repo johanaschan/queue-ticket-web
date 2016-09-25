@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 
-import {Ticket} from './';
+import {Ticket, TicketStatus} from './';
 import {LocalStorageService} from './local-storage.service';
 
 @Injectable()
@@ -38,6 +38,12 @@ export class TicketService {
   dropTicket(ticketNumber: any): Observable<any> {
     return this.http.delete(this.queueTicketApiUrl + '/drop/' + ticketNumber)
       .do(newTicket => this.localStorageService.setCustomerTicket(null))
+      .catch(this.handleError);
+  }
+
+  ticketStatus(ticketNumber: any): Observable<TicketStatus> {
+    return this.http.get(this.queueTicketApiUrl + '/ticketstatus/' + ticketNumber)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
