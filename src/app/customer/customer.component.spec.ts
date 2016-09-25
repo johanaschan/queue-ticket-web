@@ -1,9 +1,12 @@
 import {TestBed, async} from '@angular/core/testing';
-import {CustomerComponent} from './';
-import {Ticket, TicketService} from '../shared';
 import {Observable} from 'rxjs';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
+import {Response, ResponseOptions} from '@angular/http';
+
+import {CustomerComponent} from './';
+import {Ticket, TicketService, TicketStatus} from '../shared';
+
 
 const queueTicketNumber = 100;
 
@@ -13,16 +16,22 @@ class TicketServiceStub {
     return null;
   }
 
-  newTicket(): Observable<any> {
+  newTicket(): Observable<Ticket> {
     return Observable.of(new Ticket(1, queueTicketNumber));
   }
-}
 
+  ticketStatus(ticketNumber: number): Observable<TicketStatus> {
+    return Observable.of(new TicketStatus(1, 1));
+  }
+
+  dropTicket(ticketNumber: any): Observable<Response> {
+    return Observable.of(new Response(new ResponseOptions()));
+  }
+}
 
 @Component({selector: 'app-current-ticket', template: ''})
 class CurrentStubComponent {
 }
-
 
 describe('CustomerComponent', () => {
   beforeEach(() => {
@@ -51,5 +60,27 @@ describe('CustomerComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h4').textContent).toEqual('Your ticket: ' + queueTicketNumber);
     expect(compiled.querySelector('button').textContent).toEqual('Drop ticket');
+  }));
+
+  it('should render ticket status', async(() => {
+    const fixture = TestBed.createComponent(CustomerComponent);
+    fixture.detectChanges();
+    fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
+    fixture.detectChanges();
+    fixture.debugElement.query(By.css(('button.btn-success'))).triggerEventHandler('click', null);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.ticket-status')).toBeTruthy();
+  }));
+
+  it('should render new ticket button after drop ticket', async(() => {
+    const fixture = TestBed.createComponent(CustomerComponent);
+    fixture.detectChanges();
+    fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
+    fixture.detectChanges();
+    fixture.debugElement.query(By.css(('button'))).triggerEventHandler('click', null);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').textContent).toEqual('New ticket');
   }));
 });

@@ -1,22 +1,24 @@
 import {TestBed, async} from '@angular/core/testing';
-import {AdminComponent} from './';
-import {TicketService} from '../shared';
 import {Observable} from 'rxjs';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
+import {Response, ResponseOptions} from '@angular/http';
+
+import {AdminComponent} from './';
+import {TicketService} from '../shared';
 
 let queueTicketNumber = 100;
 
 class TicketServiceStub {
 
-  nextTicket(): Observable<any> {
+  nextTicket(): Observable<Response> {
     queueTicketNumber += 1;
-    return Observable.of({});
+    return Observable.of(new Response(new ResponseOptions()));
   }
 
-  resetTickets(): Observable<any> {
+  resetTickets(): Observable<Response> {
     queueTicketNumber = 0;
-    return Observable.of({});
+    return Observable.of(new Response(new ResponseOptions()));
   }
 }
 

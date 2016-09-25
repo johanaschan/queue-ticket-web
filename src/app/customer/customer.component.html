@@ -1,6 +1,6 @@
 <app-current-ticket></app-current-ticket>
 <h4 *ngIf="ticket">Your ticket: {{ticket.number}}</h4>
-<div *ngIf="ticketStatus">
+<div class="ticket-status" *ngIf="ticketStatus">
   <h4>Status</h4>
   <h5>Estimated wait time: {{ticketStatus.estimatedWaitTime}}</h5>
   <h5>Customers before: {{ticketStatus.numbersBefore}}</h5>

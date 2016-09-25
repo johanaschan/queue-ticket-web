@@ -25,7 +25,7 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  nextTicket(): Observable<any> {
+  nextTicket(): Observable<Response> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
       .catch(this.handleError);
   }
@@ -37,7 +37,7 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  dropTicket(ticketNumber: any): Observable<any> {
+  dropTicket(ticketNumber: any): Observable<Response> {
     return this.http.delete(this.queueTicketApiUrl + '/drop/' + ticketNumber)
       .do(newTicket => this.localStorageService.setCustomerTicket(null))
       .catch(this.handleError);
@@ -49,7 +49,7 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  resetTickets(): Observable<Ticket> {
+  resetTickets(): Observable<Response> {
     return this.http.delete(this.queueTicketApiUrl + '/reset')
       .catch(this.handleError);
   }
