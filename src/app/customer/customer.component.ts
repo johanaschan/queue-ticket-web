@@ -28,7 +28,10 @@ export class CustomerComponent implements OnInit {
 
   dropTicket(): void {
     this.ticketService.dropTicket(this.ticket.number).subscribe(
-      response => this.ticket = null,
+      response => {
+        this.ticket = null;
+        this.ticketStatus = null;
+      },
       error => this.errorMessage = <any>error);
   }
 
