@@ -49,6 +49,11 @@ describe('TicketService', () => {
     expect(http.delete).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/reset');
   });
 
+  it('should call http.get reset', () => {
+    ticketService.size();
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/size');
+  });
+
   it('should call localStorageService.getCustomerTicket', () => {
     ticketService.customerTicket();
     expect(localStorageService.getCustomerTicket).toHaveBeenCalled();

@@ -4,11 +4,16 @@ import {Ticket, TicketService} from '../';
 import {Observable} from 'rxjs';
 
 const queueTicketNumber = 100;
+const size = 2;
 
 class TicketServiceStub {
 
   currentTicket(): Observable<Ticket> {
     return Observable.of(new Ticket(1, queueTicketNumber));
+  }
+
+  size(): Observable<number> {
+    return Observable.of(size);
   }
 
 }
@@ -38,7 +43,8 @@ describe('CurrentTicketComponent', () => {
     fixture.detectChanges();
     discardPeriodicTasks();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toEqual('Current ticket: ' + queueTicketNumber);
+    expect(compiled.querySelector('h4.current').textContent).toEqual('Current ticket: ' + queueTicketNumber);
+    expect(compiled.querySelector('h4.size').textContent).toEqual('Size: ' + size);
   }));
 
 });

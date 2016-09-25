@@ -19,6 +19,12 @@ export class TicketService {
       .catch(this.handleError);
   }
 
+  size(): Observable<number> {
+    return this.http.get(this.queueTicketApiUrl + '/size')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   nextTicket(): Observable<any> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
       .catch(this.handleError);

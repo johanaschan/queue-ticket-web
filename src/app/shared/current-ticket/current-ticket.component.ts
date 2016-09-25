@@ -10,19 +10,33 @@ import {Ticket, TicketService} from '../';
 export class CurrentTicketComponent implements OnInit {
 
   private currentTicket: Ticket;
+  private size: number;
 
   constructor(private ticketService: TicketService) {
   }
 
   ngOnInit(): void {
-    this.getCurrentTicket();
-    setInterval(() => this.getCurrentTicket(), 1000);
+    this.fetchInformation();
+    setInterval(() => {
+      this.fetchInformation();
+    }, 1000);
   }
 
   getCurrentTicket(): void {
     this.ticketService.currentTicket().subscribe(
       currentTicket => this.currentTicket = currentTicket,
       error => this.currentTicket = null);
+  }
+
+  getSize(): void {
+    this.ticketService.size().subscribe(
+      size => this.size = size,
+      error => this.size = null);
+  }
+
+  private fetchInformation(): void {
+    this.getCurrentTicket();
+    this.getSize();
   }
 
 }
