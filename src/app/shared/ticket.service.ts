@@ -59,8 +59,11 @@ export class TicketService {
   }
 
   private extractData(response: Response) {
-    const body = response.json();
-    return body || {};
+    let data = response.json();
+    if (data == null) {
+      data = {};
+    }
+    return data;
   }
 
   private handleError(error: any) {

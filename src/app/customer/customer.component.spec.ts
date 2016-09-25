@@ -20,7 +20,8 @@ class TicketServiceStub {
 
 
 @Component({selector: 'app-current-ticket', template: ''})
-class CurrentStubComponent {}
+class CurrentStubComponent {
+}
 
 
 describe('CustomerComponent', () => {

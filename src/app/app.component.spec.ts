@@ -3,14 +3,17 @@ import {AppComponent} from './app.component';
 import {Component} from '@angular/core';
 
 @Component({selector: 'app-admin', template: ''})
-class AdminStubComponent {}
+class AdminStubComponent {
+}
 
 @Component({selector: 'app-customer', template: ''})
-class CustomerStubComponent {}
+class CustomerStubComponent {
+}
 
 // tslint:disable-next-line:component-selector-prefix
 @Component({selector: 'router-outlet', template: ''})
-class RouterOutletStubComponent {}
+class RouterOutletStubComponent {
+}
 
 describe('AppComponent', () => {
   beforeEach(() => {
