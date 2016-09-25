@@ -15,6 +15,7 @@ export class CurrentTicketComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCurrentTicket();
     setInterval(() => this.getCurrentTicket(), 1000);
   }
 

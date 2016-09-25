@@ -8,7 +8,7 @@ import {LocalStorageService} from './local-storage.service';
 @Injectable()
 export class TicketService {
 
-  private readonly queueTicketApiUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
+  readonly queueTicketApiUrl = 'https://queue-ticket-api.herokuapp.com/tickets';
 
   constructor(private http: Http, private localStorageService: LocalStorageService) {
   }
@@ -22,10 +22,6 @@ export class TicketService {
   nextTicket(): Observable<any> {
     return this.http.post(this.queueTicketApiUrl + '/next', null)
       .catch(this.handleError);
-  }
-
-  customerTicket(): Ticket {
-    return this.localStorageService.getCustomerTicket();
   }
 
   newTicket(): Observable<Ticket> {
@@ -52,8 +48,12 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  private extractData(res: Response) {
-    const body = res.json();
+  customerTicket(): Ticket {
+    return this.localStorageService.getCustomerTicket();
+  }
+
+  private extractData(response: Response) {
+    const body = response.json();
     return body || {};
   }
 

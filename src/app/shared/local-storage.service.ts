@@ -5,7 +5,7 @@ import {Ticket} from './';
 @Injectable()
 export class LocalStorageService {
 
-  private readonly customerKey = 'Customer';
+  readonly customerKey = 'Customer';
 
   getCustomerTicket(): Ticket {
     const customerTicket = localStorage.getItem(this.customerKey);
