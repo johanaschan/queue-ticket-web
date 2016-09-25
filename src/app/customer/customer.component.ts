@@ -23,7 +23,7 @@ export class CustomerComponent implements OnInit {
   newTicket(): void {
     this.ticketService.newTicket().subscribe(
       ticket => this.ticket = ticket,
-      error => this.errorMessage = error);
+      error => this.errorMessage = <any>error);
   }
 
   dropTicket(): void {
