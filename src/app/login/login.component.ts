@@ -2,34 +2,37 @@ import{Component}from'@angular/core';
 import {UserService, AuthorizationService}from '../shared';
 
 @Component({
-   selector: 'app-login',
-   templateUrl: 'login.component.html',
-   styleUrls: ['login.component.css']
+  selector: 'app-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
 })
 export class LoginComponent {
-   username= 'Aschan';
-   password= 'Lmar';
-   token = '';
-   errorMessage = '';
+  username = 'Aschan';
+  password = 'Lmar';
+  token: String;
+  errorMessage: String;
 
-   constructor(private userService: UserService, private authorizationService: AuthorizationService ) {
-   }
+  constructor(private userService: UserService, private authorizationService: AuthorizationService) {
+  }
 
-   login() {
+  login() {
     this.userService.login(this.username, this.password).subscribe(
-      response => {this.authorizationService.setToken((response as any).token); },
-
+      response => {
+        this.authorizationService.setToken((response as any).token);
+      },
       error => this.errorMessage = <any>error);
-   }
+  }
 
-   try() {
+  test() {
     this.userService.test(this.authorizationService.getToken()).subscribe(
-      response => {this.write(response); },
+      response => {
+        this.write(response);
+      },
       error => this.errorMessage = <any>error);
-   }
+  }
 
-    write(message) {
-       this.errorMessage = message;
-    }
+  write(message) {
+    this.errorMessage = message;
+  }
 
 }
