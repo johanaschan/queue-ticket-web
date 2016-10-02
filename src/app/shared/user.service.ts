@@ -11,7 +11,7 @@ constructor(private http: Http) {
 
   }
 
-  login(username: string, password: string) :Observable<string> {
+  login(username: string, password: string): Observable<string> {
     return this.http.post(this.queueTicketUserUrl + '/login/', {name: username, password: password})
       .map(this.extractData)
       .catch(this.handleError);

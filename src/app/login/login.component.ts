@@ -12,19 +12,19 @@ export class LoginComponent {
    token = '';
    errorMessage = '';
 
-   constructor(private userService: UserService, private authorizationService: AuthorizationService ){
+   constructor(private userService: UserService, private authorizationService: AuthorizationService ) {
    }
 
    login() {
-    this.userService.login(this.username,this.password).subscribe(
-      response => {this.authorizationService.setToken((response as any).token);},
+    this.userService.login(this.username, this.password).subscribe(
+      response => {this.authorizationService.setToken((response as any).token); },
 
       error => this.errorMessage = <any>error);
    }
 
    try() {
     this.userService.test(this.authorizationService.getToken()).subscribe(
-      response => {this.write(response);},
+      response => {this.write(response); },
       error => this.errorMessage = <any>error);
    }
 
