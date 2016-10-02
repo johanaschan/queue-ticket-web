@@ -6,8 +6,10 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {AdminComponent} from './admin';
 import {CustomerComponent} from './customer';
+import {LoginComponent} from './login';
 import {CurrentTicketComponent} from './shared/current-ticket';
-import {LocalStorageService, TicketService} from './shared';
+import {LocalStorageService, TicketService, UserService, AuthorizationService} from './shared';
+
 import {routing, appRoutingProviders}  from './app.routing';
 
 @NgModule({
@@ -15,6 +17,7 @@ import {routing, appRoutingProviders}  from './app.routing';
     AppComponent,
     AdminComponent,
     CustomerComponent,
+    LoginComponent,
     CurrentTicketComponent
   ],
   imports: [
@@ -26,6 +29,8 @@ import {routing, appRoutingProviders}  from './app.routing';
   providers: [
     LocalStorageService,
     TicketService,
+    UserService,
+    AuthorizationService,
     appRoutingProviders
   ],
   bootstrap: [AppComponent]
