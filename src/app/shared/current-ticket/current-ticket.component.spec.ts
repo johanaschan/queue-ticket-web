@@ -1,7 +1,7 @@
 import {TestBed, async, fakeAsync, tick, discardPeriodicTasks} from '@angular/core/testing';
 import {CurrentTicketComponent} from './';
-import {Ticket, TicketService} from '../';
-import {Observable} from 'rxjs';
+import {Ticket, TicketService, WebsocketService} from '../';
+import {Observable, Subject} from 'rxjs';
 
 const queueTicketNumber = 100;
 const size = 2;
@@ -9,13 +9,20 @@ const size = 2;
 class TicketServiceStub {
 
   currentTicket(): Observable<Ticket> {
-    return Observable.of(new Ticket(1, queueTicketNumber));
+    return Observable.of(new Ticket(1, queueTicketNumber, 1));
   }
 
   size(): Observable<number> {
     return Observable.of(size);
   }
 
+}
+
+class WebSocketServiceStub {
+
+  getEvent(): Subject<Event> {
+    return new Subject<Event>();
+  }
 }
 
 describe('CurrentTicketComponent', () => {
@@ -25,7 +32,8 @@ describe('CurrentTicketComponent', () => {
         CurrentTicketComponent
       ],
       providers: [
-        {provide: TicketService, useClass: TicketServiceStub}
+        {provide: TicketService, useClass: TicketServiceStub},
+        {provide: WebsocketService, useClass: WebSocketServiceStub}
       ]
     });
   });

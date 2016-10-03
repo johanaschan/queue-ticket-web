@@ -17,7 +17,7 @@ describe('LocalStorageService', () => {
   });
 
   it('should call localStorage.setItem', () => {
-    const ticket = new Ticket(1, 1);
+    const ticket = new Ticket(1, 1, 1);
     localStorageService.setCustomerTicket(ticket);
     expect(localStorage.setItem).toHaveBeenCalledWith(localStorageService.customerKey, JSON.stringify(ticket));
   });

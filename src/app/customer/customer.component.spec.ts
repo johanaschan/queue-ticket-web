@@ -1,23 +1,25 @@
 import {TestBed, async} from '@angular/core/testing';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
 import {Response, ResponseOptions} from '@angular/http';
 
 import {CustomerComponent} from './';
-import {Ticket, TicketService, TicketStatus} from '../shared';
+import {Ticket, TicketService, TicketStatus, WebsocketService} from '../shared';
 
 
 const queueTicketNumber = 100;
 
 class TicketServiceStub {
 
-  customerTicket(): Ticket {
-    return null;
+  customerTicket(): Subject<Ticket> {
+    const ticket = new Subject<Ticket>();
+    ticket.next(new Ticket(1, queueTicketNumber, 1));
+    return ticket;
   }
 
   newTicket(): Observable<Ticket> {
-    return Observable.of(new Ticket(1, queueTicketNumber));
+    return Observable.of(new Ticket(1, queueTicketNumber, 1));
   }
 
   ticketStatus(ticketNumber: number): Observable<TicketStatus> {
@@ -26,6 +28,13 @@ class TicketServiceStub {
 
   dropTicket(ticketNumber: any): Observable<Response> {
     return Observable.of(new Response(new ResponseOptions()));
+  }
+}
+
+class WebsocketServiceStub {
+
+  getEvent(): Subject<Event> {
+    return new Subject<Event>();
   }
 }
 
@@ -41,7 +50,8 @@ describe('CustomerComponent', () => {
         CurrentStubComponent
       ],
       providers: [
-        {provide: TicketService, useClass: TicketServiceStub}
+        {provide: TicketService, useClass: TicketServiceStub},
+        {provide: WebsocketService, useClass: WebsocketServiceStub}
       ]
     });
   });

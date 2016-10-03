@@ -8,5 +8,4 @@
 <button *ngIf="!ticket" (click)="newTicket()" class="btn btn-info">New ticket</button>
 <button *ngIf="ticket" (click)="dropTicket()" class="btn btn-danger">Drop ticket</button>
 <button *ngIf="ticket" (click)="getTicketStatus()" class="btn btn-success">Ticket status</button>
-<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 

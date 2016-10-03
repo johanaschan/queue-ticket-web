@@ -1,25 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
 
-import {Ticket, TicketService} from '../';
+import {Ticket, TicketService, WebsocketService} from '../';
 
 @Component({
   selector: 'app-current-ticket',
   templateUrl: 'current-ticket.component.html',
   styleUrls: ['current-ticket.component.css']
 })
-export class CurrentTicketComponent implements OnInit {
+export class CurrentTicketComponent implements OnInit, OnDestroy {
 
   private currentTicket: Ticket;
   private size: number;
+  private subscription: Subscription;
 
-  constructor(private ticketService: TicketService) {
+  constructor(private ticketService: TicketService, private webSocketService: WebsocketService) {
   }
 
   ngOnInit(): void {
     this.fetchInformation();
-    setInterval(() => {
-      this.fetchInformation();
-    }, 1000);
+    this.subscription = this.webSocketService.getEvent().subscribe(
+      event => this.fetchInformation());
+  }
+
+  ngOnDestroy(): void {
+    //this.subscription.unsubscribe();
   }
 
   getCurrentTicket(): void {

@@ -19,39 +19,39 @@ describe('TicketService', () => {
 
   it('should call http.get current', () => {
     ticketService.currentTicket();
-    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/current');
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/current');
   });
 
   it('should call http.post next', () => {
     ticketService.nextTicket();
-    expect(http.post).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/next', null);
+    expect(http.post).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/next', null);
   });
 
   it('should call http.get new', () => {
     ticketService.newTicket();
-    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/new');
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/new');
   });
 
   it('should call http.delete drop', () => {
     const ticketNumber = 10;
     ticketService.dropTicket(ticketNumber);
-    expect(http.delete).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/drop/' + ticketNumber);
+    expect(http.delete).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/drop/' + ticketNumber);
   });
 
   it('should call http.get ticketstatus', () => {
     const ticketNumber = 10;
     ticketService.ticketStatus(ticketNumber);
-    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/ticketstatus/' + ticketNumber);
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/ticketstatus/' + ticketNumber);
   });
 
   it('should call http.delete reset', () => {
     ticketService.resetTickets();
-    expect(http.delete).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/reset');
+    expect(http.delete).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/reset');
   });
 
   it('should call http.get reset', () => {
     ticketService.size();
-    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/size');
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/size');
   });
 
   it('should call localStorageService.getCustomerTicket', () => {

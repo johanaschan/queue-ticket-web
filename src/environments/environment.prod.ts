@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  queueTicketApiUrl: 'https://queue-ticket-api.herokuapp.com'
 };

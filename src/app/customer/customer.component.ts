@@ -1,44 +1,58 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Subscription} from 'rxjs';
 
-import {Ticket, TicketService, TicketStatus} from '../shared';
+import {Ticket, TicketService, TicketStatus, WebsocketService} from '../shared';
 
 @Component({
   selector: 'app-customer',
   templateUrl: 'customer.component.html',
   styleUrls: ['customer.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent implements OnInit, OnDestroy {
 
   private ticket: Ticket;
   private ticketStatus: TicketStatus;
-  private errorMessage: string;
+  private subscription: Subscription;
 
-  constructor(private ticketService: TicketService) {
+  constructor(private ticketService: TicketService, private websocketService: WebsocketService) {
   }
 
   ngOnInit(): void {
-    this.ticket = this.ticketService.customerTicket();
+    this.ticketService.customerTicket().subscribe(ticket => this.ticket = ticket);
+    this.subscription = this.websocketService.getEvent().subscribe(
+      event => {
+        if (event.event === 'RESET') {
+          this.reset();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    // this.subscription.unsubscribe();
   }
 
   newTicket(): void {
     this.ticketService.newTicket().subscribe(
-      ticket => this.ticket = ticket,
-      error => this.errorMessage = <any>error);
+      ticket => this.ticket = ticket);
   }
 
   dropTicket(): void {
     this.ticketService.dropTicket(this.ticket.number).subscribe(
       response => {
-        this.ticket = null;
-        this.ticketStatus = null;
-      },
-      error => this.errorMessage = <any>error);
+        this.reset();
+      });
   }
 
   getTicketStatus(): void {
     this.ticketService.ticketStatus(this.ticket.number).subscribe(
-      ticketStatus => this.ticketStatus = ticketStatus,
-      error => this.errorMessage = <any>error);
+      ticketStatus => {
+        this.ticketStatus = ticketStatus;
+      });
+  }
+
+  private reset(): void {
+    this.ticket = null;
+    this.ticketStatus = null;
   }
 
 }
