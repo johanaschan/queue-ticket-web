@@ -13,13 +13,8 @@ export class WebsocketService {
 
   private event;
 
-  constructor(event?: Observable<Event>) {
-    if (event == null) {
-      this.init();
-    } else {
-      this.event = event;
-    }
-
+  constructor() {
+    this.init();
   }
 
   init() {
