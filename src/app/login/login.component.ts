@@ -1,5 +1,5 @@
-import{Component}from'@angular/core';
-import {UserService, AuthorizationService}from '../shared';
+import{ Component }from'@angular/core';
+import { UserService, AuthorizationService }from '../shared/service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +7,7 @@ import {UserService, AuthorizationService}from '../shared';
   styleUrls: ['login.component.css']
 })
 export class LoginComponent {
+
   username = 'Aschan';
   password = 'Lmar';
   token: String;

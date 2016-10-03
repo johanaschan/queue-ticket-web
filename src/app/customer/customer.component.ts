@@ -1,7 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {Ticket, TicketService, TicketStatus, WebsocketService} from '../shared';
+import { Ticket, TicketStatus } from '../shared';
+import { TicketService, WebsocketService } from '../shared/service';
 
 @Component({
   selector: 'app-customer',
@@ -28,7 +29,9 @@ export class CustomerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe();
+    if (this.subscription != null) {
+      this.subscription.unsubscribe();
+    }
   }
 
   newTicket(): void {

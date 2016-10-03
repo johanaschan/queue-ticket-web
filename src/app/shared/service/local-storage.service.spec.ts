@@ -1,5 +1,5 @@
-import {LocalStorageService} from './';
-import {Ticket} from './ticket';
+import { LocalStorageService } from './.';
+import { Ticket } from '../';
 
 describe('LocalStorageService', () => {
 

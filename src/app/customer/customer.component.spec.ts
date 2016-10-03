@@ -1,12 +1,12 @@
-import {TestBed, async} from '@angular/core/testing';
-import {Observable, Subject} from 'rxjs';
-import {By} from '@angular/platform-browser';
-import {Component} from '@angular/core';
-import {Response, ResponseOptions} from '@angular/http';
+import { TestBed, async } from '@angular/core/testing';
+import { Observable, Subject } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { Response, ResponseOptions } from '@angular/http';
 
-import {CustomerComponent} from './';
-import {Ticket, TicketService, TicketStatus, WebsocketService} from '../shared';
-
+import { CustomerComponent } from './';
+import { Ticket, TicketStatus } from '../shared';
+import { TicketService, WebsocketService } from '../shared/service';
 
 const queueTicketNumber = 100;
 

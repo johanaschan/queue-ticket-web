@@ -1,17 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Observable, Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable, Subject } from 'rxjs';
 
-import {Ticket, TicketStatus} from './';
-import {LocalStorageService} from './local-storage.service';
-import {environment} from '../../environments/environment';
+import { Ticket, TicketStatus } from '../.';
+import { LocalStorageService } from './local-storage.service';
+import { HttpBaseService } from './http-base.service';
 
 @Injectable()
-export class TicketService {
-
-  readonly queueTicketApiUrl = environment.queueTicketApiUrl;
+export class TicketService extends HttpBaseService {
 
   constructor(private http: Http, private localStorageService: LocalStorageService) {
+    super();
   }
 
   currentTicket(): Observable<Ticket> {
@@ -61,39 +60,23 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  customerTicket(): Subject<Ticket> {
+  customerTicket(): Observable<Ticket> {
     let ticket = this.localStorageService.getCustomerTicket();
     const subject = new Subject<Ticket>();
     if (ticket != null) {
-      this.version().subscribe(version => {
-        if (version === ticket.version) {
-          subject.next(ticket);
+      this.version().subscribe(
+        version => {
+          if (version === ticket.version) {
+            subject.next(ticket);
+          } else {
+            this.localStorageService.setCustomerTicket(null);
+          }
           subject.complete();
-        } else {
-          this.localStorageService.setCustomerTicket(null);
-        }
-      });
+        },
+        error => subject.error(error));
     } else {
       subject.complete();
     }
     return subject;
   }
-
-  private extractData(response: Response) {
-    let data;
-    if (response.text() !== '') {
-      data = response.json();
-    } else {
-      data = null;
-    }
-    return data;
-  }
-
-  private handleError(error: any) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
-    return Observable.throw(errMsg);
-  }
-
 }

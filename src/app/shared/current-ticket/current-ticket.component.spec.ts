@@ -1,7 +1,8 @@
-import {TestBed, async, fakeAsync, tick, discardPeriodicTasks} from '@angular/core/testing';
-import {CurrentTicketComponent} from './';
-import {Ticket, TicketService, WebsocketService} from '../';
-import {Observable, Subject} from 'rxjs';
+import { TestBed, async, fakeAsync, tick, discardPeriodicTasks } from '@angular/core/testing';
+import { CurrentTicketComponent } from './';
+import { TicketService, WebsocketService } from '../service';
+import { Ticket } from '../';
+import { Observable } from 'rxjs';
 
 const queueTicketNumber = 100;
 const size = 2;
@@ -20,8 +21,8 @@ class TicketServiceStub {
 
 class WebSocketServiceStub {
 
-  getEvent(): Subject<Event> {
-    return new Subject<Event>();
+  getEvent(): Observable<Event> {
+    return Observable.empty<Event>();
   }
 }
 

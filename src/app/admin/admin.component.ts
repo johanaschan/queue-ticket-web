@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {TicketService} from '../shared';
+import { TicketService } from '../shared/service';
 
 @Component({
   selector: 'app-admin',
@@ -9,21 +9,17 @@ import {TicketService} from '../shared';
 })
 export class AdminComponent {
 
-  private errorMessage: string;
-
   constructor(private ticketService: TicketService) {
   }
 
   nextTicket(): void {
     this.ticketService.nextTicket().subscribe(
-      response => {},
-      error => this.errorMessage = <any>error);
+      response => {});
   }
 
   resetTickets(): void {
     this.ticketService.resetTickets().subscribe(
-      response => {},
-      error => this.errorMessage = <any>error);
+      response => {});
   }
 
 }

@@ -12,14 +12,16 @@ declare var __karma__: any;
 declare var require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = function () {};
+__karma__.loaded = function () {
+};
 
+(<any>window).process = {env: {NODE_ENV: 'development'}};
 
 Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
 ])
-  // First, initialize the Angular testing environment.
+// First, initialize the Angular testing environment.
   .then(([testing, testingBrowser]) => {
     testing.getTestBed().initTestEnvironment(
       testingBrowser.BrowserDynamicTestingModule,

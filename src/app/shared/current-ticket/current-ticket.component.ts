@@ -1,7 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {Ticket, TicketService, WebsocketService} from '../';
+import { Ticket } from '../';
+import { TicketService, WebsocketService } from '../service';
 
 @Component({
   selector: 'app-current-ticket',
@@ -10,8 +11,8 @@ import {Ticket, TicketService, WebsocketService} from '../';
 })
 export class CurrentTicketComponent implements OnInit, OnDestroy {
 
-  private currentTicket: Ticket;
-  private size: number;
+  currentTicket: Ticket;
+  size: number;
   private subscription: Subscription;
 
   constructor(private ticketService: TicketService, private webSocketService: WebsocketService) {
@@ -24,7 +25,9 @@ export class CurrentTicketComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //this.subscription.unsubscribe();
+    if (this.subscription != null) {
+      this.subscription.unsubscribe();
+    }
   }
 
   getCurrentTicket(): void {

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {Ticket} from './';
+import { Ticket } from '../.';
 
 @Injectable()
 export class LocalStorageService {

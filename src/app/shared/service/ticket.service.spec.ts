@@ -1,6 +1,7 @@
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
-import {TicketService} from './';
+import { TicketService } from './.';
+import { Ticket } from '../.';
 
 describe('TicketService', () => {
 
@@ -14,6 +15,7 @@ describe('TicketService', () => {
     http.delete.and.returnValue(Observable.empty());
     http.post.and.returnValue(Observable.empty());
     localStorageService = jasmine.createSpyObj('localStorageService', ['getCustomerTicket', 'setCustomerTicket']);
+    localStorageService.getCustomerTicket.and.returnValue(new Ticket(1, 1, 1));
     ticketService = new TicketService(http, localStorageService);
   });
 
@@ -54,8 +56,14 @@ describe('TicketService', () => {
     expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/size');
   });
 
-  it('should call localStorageService.getCustomerTicket', () => {
+  it('should call localStorageService.getCustomerTicket and http.get version', () => {
     ticketService.customerTicket();
     expect(localStorageService.getCustomerTicket).toHaveBeenCalled();
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/version');
+  });
+
+  it('should call http.get version', () => {
+    ticketService.version();
+    expect(http.get).toHaveBeenCalledWith(ticketService.queueTicketApiUrl + '/tickets/version');
   });
 });
