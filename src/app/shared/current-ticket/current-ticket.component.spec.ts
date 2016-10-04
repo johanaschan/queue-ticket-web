@@ -1,6 +1,6 @@
 import { TestBed, async, fakeAsync, tick, discardPeriodicTasks } from '@angular/core/testing';
 import { CurrentTicketComponent } from './';
-import { TicketService, WebsocketService } from '../service';
+import { TicketService, WebsocketService } from './.';
 import { Ticket } from '../';
 import { Observable } from 'rxjs';
 

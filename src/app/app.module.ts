@@ -8,8 +8,8 @@ import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
-import { PrettyTimePipe } from './shared/pipe';
-import { LocalStorageService, TicketService, UserService, AuthorizationService, WebsocketService } from './shared/service';
+import { PrettyTimePipe } from './shared/pipes';
+import { LocalStorageService, TicketService, UserService, AuthorizationService, WebsocketService } from './shared/services';
 import { routing, appRoutingProviders }  from './app.routing';
 
 @NgModule({

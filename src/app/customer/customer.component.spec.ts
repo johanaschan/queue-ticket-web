@@ -6,8 +6,8 @@ import { Response, ResponseOptions } from '@angular/http';
 
 import { CustomerComponent } from './';
 import { Ticket, TicketStatus } from '../shared';
-import { TicketService, WebsocketService } from '../shared/service';
-import { PrettyTimePipe } from '../shared/pipe';
+import { TicketService, WebsocketService } from './.';
+import { PrettyTimePipe } from './.';
 
 const queueTicketNumber = 100;
 

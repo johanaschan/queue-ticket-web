@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TicketService } from '../shared/service';
+import { TicketService } from './.';
 
 @Component({
   selector: 'app-admin',
