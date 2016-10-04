@@ -4,7 +4,6 @@ import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
 
-
 const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'customer', component: CustomerComponent},
