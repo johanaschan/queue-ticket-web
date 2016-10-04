@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-const pretty = require('pretty-time');
 
 import { Ticket, TicketStatus } from '../shared';
 import { TicketService, WebsocketService } from '../shared/service';
@@ -52,10 +51,6 @@ export class CustomerComponent implements OnInit, OnDestroy {
       ticketStatus => {
         this.ticketStatus = ticketStatus;
       });
-  }
-
-  pretty(number: number): string {
-    return pretty(number, 's');
   }
 
   private reset(): void {

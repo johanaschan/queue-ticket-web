@@ -8,6 +8,7 @@ import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
+import { PrettyTimePipe } from './shared/pipe';
 import { LocalStorageService, TicketService, UserService, AuthorizationService, WebsocketService } from './shared/service';
 import { routing, appRoutingProviders }  from './app.routing';
 
@@ -17,7 +18,8 @@ import { routing, appRoutingProviders }  from './app.routing';
     AdminComponent,
     CustomerComponent,
     LoginComponent,
-    CurrentTicketComponent
+    CurrentTicketComponent,
+    PrettyTimePipe
   ],
   imports: [
     BrowserModule,

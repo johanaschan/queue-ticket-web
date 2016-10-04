@@ -7,6 +7,7 @@ import { Response, ResponseOptions } from '@angular/http';
 import { CustomerComponent } from './';
 import { Ticket, TicketStatus } from '../shared';
 import { TicketService, WebsocketService } from '../shared/service';
+import { PrettyTimePipe } from '../shared/pipe';
 
 const queueTicketNumber = 100;
 
@@ -47,7 +48,8 @@ describe('CustomerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         CustomerComponent,
-        CurrentStubComponent
+        CurrentStubComponent,
+        PrettyTimePipe
       ],
       providers: [
         {provide: TicketService, useClass: TicketServiceStub},

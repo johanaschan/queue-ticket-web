@@ -2,7 +2,7 @@
 <h4 *ngIf="ticket">Your ticket: {{ticket.number}}</h4>
 <div class="ticket-status" *ngIf="ticketStatus">
   <h4>Status</h4>
-  <h5>Estimated wait time: {{pretty(ticketStatus.estimatedWaitTime)}}</h5>
+  <h5>Estimated wait time: {{ ticketStatus.estimatedWaitTime | prettyTime }}</h5>
   <h5>Customers before: {{ticketStatus.numbersBefore}}</h5>
 </div>
 <button *ngIf="!ticket" (click)="newTicket()" class="btn btn-info">New ticket</button>
