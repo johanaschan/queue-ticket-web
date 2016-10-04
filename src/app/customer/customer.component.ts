@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Ticket, TicketStatus } from '../shared';
-import { TicketService, WebsocketService } from './.';
+import { TicketService, WebsocketService } from '../shared/services';
 
 @Component({
   selector: 'app-customer',

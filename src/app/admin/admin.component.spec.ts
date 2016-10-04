@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { Response, ResponseOptions } from '@angular/http';
 
 import { AdminComponent } from './';
-import { TicketService } from './.';
+import { TicketService } from '../shared/services';
 
 let queueTicketNumber = 100;
 

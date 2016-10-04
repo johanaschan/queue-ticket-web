@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-const pretty = require('pretty-time');
+const prettyTime = require('pretty-time');
 
 @Pipe({
   name: 'prettyTime'
@@ -7,7 +7,7 @@ const pretty = require('pretty-time');
 export class PrettyTimePipe implements PipeTransform {
 
   transform(value: number): string {
-    return pretty(value, 's');
+    return prettyTime(value, 's');
   }
 
 }
