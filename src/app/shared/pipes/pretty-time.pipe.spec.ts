@@ -9,7 +9,7 @@ describe('Pipe: PrettyNumber', () => {
 
   it('transforms time', () => {
     let pipe = new PrettyTimePipe();
-    expect(pipe.transform(299292929292929)).toEqual('3d 11h 8m 13s');
+    expect(pipe.transform(3600000000)).toEqual('1 hour');
   });
 
 });
