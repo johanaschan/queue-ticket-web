@@ -8,10 +8,10 @@ import { UserService, AuthorizationService } from '../shared/services';
 })
 export class LoginComponent {
 
-  username = 'Aschan';
-  password = 'Lmar';
-  token: String;
-  errorMessage: String;
+  username: string;
+  password: string;
+  token: string;
+  errorMessage: string;
 
   constructor(private userService: UserService, private authorizationService: AuthorizationService) {
   }
