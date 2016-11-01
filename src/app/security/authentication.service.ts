@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AuthorizationService {
+export class AuthenticationService {
 
   private claims: Array<string>;
   private token: string;
