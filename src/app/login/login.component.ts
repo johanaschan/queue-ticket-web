@@ -1,6 +1,6 @@
 import{ Component }from'@angular/core';
 import { UserService } from '../shared/services';
-import { AuthenticationService } from '../security';
+import { AuthService } from '../security';
 
 @Component({
   selector: 'app-login',
@@ -14,19 +14,19 @@ export class LoginComponent {
   token: string;
   errorMessage: string;
 
-  constructor(private userService: UserService, private authenticationService: AuthenticationService) {
+  constructor(private userService: UserService, private authService: AuthService) {
   }
 
   login() {
     this.userService.login(this.username, this.password).subscribe(
       response => {
-        this.authenticationService.setToken((response as any).token);
+        this.authService.setToken((response as any).token);
       },
       error => this.errorMessage = <any>error);
   }
 
   test() {
-    this.userService.test(this.authenticationService.getToken()).subscribe(
+    this.userService.test(this.authService.getToken()).subscribe(
       response => {
         this.write(response);
       },
