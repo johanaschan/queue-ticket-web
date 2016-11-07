@@ -10,8 +10,7 @@ import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
 import { PrettyTimePipe } from './shared/pipes';
 import { LocalStorageService, TicketService, UserService, WebsocketService } from './shared/services';
-import { AuthService} from './security';
-import { AuthGuard} from './security';
+import { AuthService, AdminAuthGuard, CustomerAuthGuard} from './security';
 import { routing, appRoutingProviders }  from './app.routing';
 
 @NgModule({
@@ -21,7 +20,7 @@ import { routing, appRoutingProviders }  from './app.routing';
     CustomerComponent,
     LoginComponent,
     CurrentTicketComponent,
-    PrettyTimePipe
+    PrettyTimePipe,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,8 @@ import { routing, appRoutingProviders }  from './app.routing';
     WebsocketService,
     UserService,
     AuthService,
-    AuthGuard,
+    AdminAuthGuard,
+    CustomerAuthGuard,
     appRoutingProviders
   ],
   bootstrap: [AppComponent]

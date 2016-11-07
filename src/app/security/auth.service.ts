@@ -3,11 +3,20 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
-  private claims: Array<string>;
+  private roles: Array<string>;
   private token: string;
 
-  getClaims(): Array<string> {
-    return this.claims;
+  constructor() {
+    this.roles = ['admin', 'customer'];
+  }
+
+  getRoles(): Array<string> {
+    return this.roles;
+  }
+
+  hasRole(role: string): boolean {
+    console.log(role);
+    return this.roles.indexOf(role) > -1;
   }
 
   setToken(token: string): void {
