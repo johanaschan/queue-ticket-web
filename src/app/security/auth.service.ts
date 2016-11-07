@@ -15,7 +15,6 @@ export class AuthService {
   }
 
   hasRole(role: string): boolean {
-    console.log(role);
     return this.roles.indexOf(role) > -1;
   }
 
