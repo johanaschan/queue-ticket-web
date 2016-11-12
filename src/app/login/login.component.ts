@@ -1,6 +1,7 @@
 import{ Component }from'@angular/core';
 import { UserService } from '../shared/services';
 import { AuthService } from '../security';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,18 @@ export class LoginComponent {
   token: string;
   errorMessage: string;
 
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
   }
 
   login() {
-    this.userService.login(this.username, this.password).subscribe(
-      response => {
-        this.authService.setToken((response as any).token);
-      },
-      error => this.errorMessage = <any>error);
+    if(this.authService.login(this.username,this.password)){
+      this.router.navigate(['main']);
+    }
+    //this.userService.login(this.username, this.password).subscribe(
+    //  response => {
+    //    this.authService.setToken((response as any).token);
+    //  },
+    //  error => this.errorMessage = <any>error);
   }
 
   test() {

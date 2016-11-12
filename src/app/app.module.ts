@@ -4,18 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { MainComponent } from './main';
 import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
 import { PrettyTimePipe } from './shared/pipes';
 import { LocalStorageService, TicketService, UserService, WebsocketService } from './shared/services';
-import { AuthService, AuthGuardAdmin, AuthGuardCustomer} from './security';
+import { AuthService, AuthGuardAdmin, AuthGuardCustomer, AuthGuardLoggedIn } from './security';
 import { routing, appRoutingProviders }  from './app.routing';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
     AdminComponent,
     CustomerComponent,
     LoginComponent,
@@ -36,6 +39,7 @@ import { routing, appRoutingProviders }  from './app.routing';
     AuthService,
     AuthGuardAdmin,
     AuthGuardCustomer,
+    AuthGuardLoggedIn,
     appRoutingProviders
   ],
   bootstrap: [AppComponent]
