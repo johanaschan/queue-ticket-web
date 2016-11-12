@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { AuthService } from './security';
-
+import { Router } from '@angular/router';
 
 @Component({selector: 'app-admin', template: ''})
 class AdminStubComponent {
@@ -19,17 +19,26 @@ class RouterOutletStubComponent {
 
 class AuthServiceStub {
 
-  hasRole(role: string): boolean {
-      if (role === 'role') {
-        return true;
-      }
-      return false;
+  isLoggedIn(): boolean {
+    return true;
   }
+}
+
+class RouterStub {
+    navigate(route: Array<string>): void {
+    }
 }
 
 describe('AppComponent', () => {
 
+  let authserviceStub;
+  let routerStub;
+
   beforeEach(() => {
+    this.authServiceStub = new AuthServiceStub();
+    this.routerStub = new RouterStub();
+    spyOn(this.authServiceStub, 'isLoggedIn');
+    spyOn(this.routerStub, 'navigate');
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -38,7 +47,8 @@ describe('AppComponent', () => {
         RouterOutletStubComponent
       ],
       providers: [
-        {provide: AuthService, useClass: AuthServiceStub}
+        {provide: AuthService, useValue: this.authServiceStub},
+        {provide: Router, useValue: this.routerStub}
       ]
     });
   });
@@ -56,16 +66,16 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toEqual('QueueTicket');
   }));
 
-  it('should call authService should be called with role user have', () => {
+  it('isLoggedIn should have been called', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.hasRole('role')).toBe(true);
-  });
+    fixture.detectChanges();
+    expect(this.authServiceStub.isLoggedIn).toHaveBeenCalled();
+  }));
 
-  it('should call authService should be called with role user do not have', () => {
+  it('isLoggedIn should have been called', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.hasRole('noRole')).toBe(false);
-  });
+    fixture.detectChanges();
+    expect(this.authServiceStub.isLoggedIn).toHaveBeenCalled();
+  }));
 
 });

@@ -5,7 +5,7 @@ export class AuthService {
 
   private roles: Array<string>;
   private token: string;
-  private loggedIn : boolean = false;
+  private loggedIn: boolean = false;
 
   constructor() {
     this.roles = ['admin', 'customer'];
@@ -19,14 +19,14 @@ export class AuthService {
     return this.roles.indexOf(role) > -1;
   }
 
-  login(username: string, password: string): boolean{
-    if(username === 'johan' && password ==='football'){
+  login(username: string, password: string): boolean {
+    if (username === 'johan' && password === 'football') {
       this.loggedIn = true;
       return true;
     }
   }
 
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     return this.loggedIn;
   }
 
