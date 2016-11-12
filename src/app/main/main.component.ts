@@ -1,5 +1,4 @@
 import{ Component }from'@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../security';
 
 @Component({
@@ -13,7 +12,7 @@ export class MainComponent {
 
   }
 
-  hasRole(role:string) : boolean{
+  hasRole(role: string): boolean {
     return this.authService.hasRole(role);
   }
 

@@ -19,10 +19,10 @@ export class LoginComponent {
   }
 
   login() {
-    if(this.authService.login(this.username,this.password)){
+    if (this.authService.login(this.username, this.password)) {
       this.router.navigate(['main']);
     }
-    //this.userService.login(this.username, this.password).subscribe(
+    // this.userService.login(this.username, this.password).subscribe(
     //  response => {
     //    this.authService.setToken((response as any).token);
     //  },

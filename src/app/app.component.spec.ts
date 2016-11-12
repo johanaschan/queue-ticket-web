@@ -31,9 +31,6 @@ class RouterStub {
 
 describe('AppComponent', () => {
 
-  let authserviceStub;
-  let routerStub;
-
   beforeEach(() => {
     this.authServiceStub = new AuthServiceStub();
     this.routerStub = new RouterStub();
