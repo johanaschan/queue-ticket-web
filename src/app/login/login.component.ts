@@ -20,7 +20,7 @@ export class LoginComponent {
   login() {
     if (this.authService.login(this.username, this.password)) {
       this.router.navigate(['main']);
-    }//write incorrect message..
+    }// write incorrect message..
   }
 
 }
