@@ -1,5 +1,15 @@
-<h1>Welcome</h1>
-<p>Supply username and password</p>
-Username: <input type="text" name="username" [(ngModel)]="username"><br>
-Password: <input type="text" name="password" [(ngModel)]="password"><br>
-<button class="btn btn-primary login" (click)="login()">Login</button>
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password">
+      </div>
+      <button class="btn btn-primary login" (click)="login()">Login</button>
+    </form>
+  </div>
+</div>
