@@ -13,7 +13,7 @@ const appRoutes: Routes = [
           [
             {path: 'customer', component: CustomerComponent, canActivate: [AuthGuardCustomer]},
             {path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin]},
-            {path: '', redirectTo: 'admin', pathMatch: 'full'}
+            {path: '', redirectTo: 'customer', pathMatch: 'full'}
           ]
    },
   {path: '', redirectTo: 'main', pathMatch: 'full'}
