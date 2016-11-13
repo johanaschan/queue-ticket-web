@@ -21,8 +21,8 @@ export class AuthService {
 
   login(username: string, password: string): boolean {
     if (username === 'johan' && password === 'football') {
-      this.loggedIn = true
-      return true;;
+      this.loggedIn = true;
+      return true;
     }
   }
 
