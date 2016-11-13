@@ -1,4 +1,4 @@
-import{ Component }from'@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../security';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class LoginComponent {
   token: string;
   errorMessage: string;
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   login() {
