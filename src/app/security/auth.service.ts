@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserService } from '../shared/services';
 
 @Injectable()
 export class AuthService {
@@ -7,9 +8,16 @@ export class AuthService {
   private token: string;
   private loggedIn: boolean = true;
 
-  constructor() {
+  constructor(userService: UserService) {
     this.roles = ['admin', 'customer'];
   }
+
+  login(username: string, password: string): boolean {
+    this.loggedIn = true;
+    return true;
+    // this.userService.login(username,password);
+  }
+
 
   getRoles(): Array<string> {
     return this.roles;
@@ -17,13 +25,6 @@ export class AuthService {
 
   hasRole(role: string): boolean {
     return this.roles.indexOf(role) > -1;
-  }
-
-  login(username: string, password: string): boolean {
-    if (username === 'johan' && password === 'football') {
-      this.loggedIn = true;
-      return true;
-    }
   }
 
   isLoggedIn(): boolean {
