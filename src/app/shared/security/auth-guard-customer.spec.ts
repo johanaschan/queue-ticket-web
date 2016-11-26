@@ -9,7 +9,7 @@ describe('AuthGuardCustomer', () => {
   beforeEach(() => {
     authService = jasmine.createSpyObj('authService', ['isLoggedIn', 'hasRole']);
     authService.hasRole.and.callFake(function(role) {
-      if (role === 'customer') {
+      if (role === 'CUSTOMER') {
         return true;
       };
       return false;
@@ -21,7 +21,7 @@ describe('AuthGuardCustomer', () => {
   it('logged in and have correct role should return true', () => {
     authService.isLoggedIn.and.returnValue(true);
     expect(authGuardCustomer.canActivate()).toBe(true);
-    expect(authService.hasRole).toHaveBeenCalledWith('customer');
+    expect(authService.hasRole).toHaveBeenCalledWith('CUSTOMER');
   });
 
   it('not logged in should route to login', () => {
@@ -39,7 +39,7 @@ describe('AuthGuardCustomer', () => {
       return false;
     });
     expect(authGuardCustomer.canActivate()).toBe(false);
-    expect(authService.hasRole).toHaveBeenCalledWith('customer');
+    expect(authService.hasRole).toHaveBeenCalledWith('CUSTOMER');
   });
 
 });

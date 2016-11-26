@@ -4,7 +4,7 @@ import { MainComponent } from './main';
 import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
-import { AuthGuardAdmin, AuthGuardCustomer, AuthGuardLoggedIn } from './security';
+import { AuthGuardAdmin, AuthGuardCustomer, AuthGuardLoggedIn } from './shared/security';
 
 
 const appRoutes: Routes = [

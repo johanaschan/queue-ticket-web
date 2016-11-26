@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
-import { AuthService } from './security';
+import { AuthService } from './shared/security';
 import { Router } from '@angular/router';
 
 @Component({selector: 'app-admin', template: ''})

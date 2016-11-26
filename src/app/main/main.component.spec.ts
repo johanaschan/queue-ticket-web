@@ -1,6 +1,6 @@
 import { TestBed} from '@angular/core/testing';
 import { MainComponent } from './main.component';
-import { AuthService } from '../security';
+import { AuthService } from '../shared/security';
 import { Component } from '@angular/core';
 
 // tslint:disable-next-line:component-selector-prefix

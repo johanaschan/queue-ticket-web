@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-xs-12">
     <ul class="nav nav-tabs">
-      <li routerLinkActive="active" *ngIf="hasRole('admin')"><a routerLink="admin">Admin</a></li>
-      <li routerLinkActive="active" *ngIf="hasRole('customer')"><a routerLink="customer">Customer</a></li>
+      <li routerLinkActive="active" *ngIf="hasRole('ADMIN')"><a routerLink="admin">Admin</a></li>
+      <li routerLinkActive="active" *ngIf="hasRole('CUSTOMER')"><a routerLink="customer">Customer</a></li>
     </ul>
     <router-outlet></router-outlet>
   </div>

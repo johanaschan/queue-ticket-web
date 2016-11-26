@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../security';
+import { AuthService } from '../shared/security';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,12 +15,15 @@ export class LoginComponent {
   errorMessage: string;
 
   constructor(private authService: AuthService, private router: Router) {
+    this.router = router;
   }
 
   login() {
-    if (this.authService.login(this.username, this.password)) {
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
       this.router.navigate(['main']);
-    }// write incorrect message..
+      },
+      error => console.log(error)
+    );
   }
-
 }

@@ -10,8 +10,8 @@ import { CustomerComponent } from './customer';
 import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
 import { PrettyTimePipe } from './shared/pipes';
-import { LocalStorageService, TicketService, UserService, WebsocketService } from './shared/services';
-import { AuthService, AuthGuardAdmin, AuthGuardCustomer, AuthGuardLoggedIn } from './security';
+import { LocalStorageService, TicketService, WebsocketService } from './shared/services';
+import { AuthService, AuthGuardAdmin, AuthGuardCustomer, AuthGuardLoggedIn, UserService } from './shared/security';
 import { routing, appRoutingProviders }  from './app.routing';
 
 

@@ -1,8 +1,8 @@
 import { Injectable } from'@angular/core';
-import { Headers, RequestOptions, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { HttpBaseService } from './http-base.service';
+import { HttpBaseService } from '../http';
 
 @Injectable()
 export class UserService extends HttpBaseService {
@@ -17,12 +17,6 @@ export class UserService extends HttpBaseService {
       .catch(this.handleError);
   }
 
-  test(token: string): Observable<string> {
-    let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token);
-    let options = new RequestOptions({headers: headers});
-    return this.http.get(this.queueTicketApiUrl + '/tickets/NOTUSED', options)
-      .catch(this.handleError);
-  }
+
 
 }

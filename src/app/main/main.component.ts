@@ -1,5 +1,5 @@
 import{ Component }from'@angular/core';
-import { AuthService } from '../security';
+import { AuthService } from '../shared/security';
 
 @Component({
   templateUrl: 'main.component.html',
