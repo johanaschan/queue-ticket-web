@@ -64,8 +64,8 @@ export class TicketService extends HttpBaseService {
   }
 
   addSecurityOptions(): RequestOptions {
-    let token = this.authService.getToken();
-    let headers = new Headers();
+    const token = this.authService.getToken();
+    const headers = new Headers();
     headers.append('Authorization', 'Bearer ' + token);
     return new RequestOptions({headers: headers});
   }

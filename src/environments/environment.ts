@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  queueTicketApiUrl: 'http://localhost:8080'
+  queueTicketApiUrl: 'https://queue-ticket-api.herokuapp.com'
 };

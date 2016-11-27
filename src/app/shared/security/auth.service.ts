@@ -16,10 +16,11 @@ export class AuthService {
     const subject = new Subject<string>();
     this.userService.login(username, password).subscribe(
       response => {
-        subject.next('Sucess');
         this.loggedIn = true;
         this.setToken((response as any).token);
         this.decodeAndSetRoles((response as any).token);
+        subject.next('SUCCESS');
+        subject.complete();
       },
       error => subject.error(error)
     );

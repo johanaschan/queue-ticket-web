@@ -21,7 +21,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.username, this.password).subscribe(
       response => {
-      this.router.navigate(['main']);
+        this.router.navigate(['main']);
       },
       error => console.log(error)
     );

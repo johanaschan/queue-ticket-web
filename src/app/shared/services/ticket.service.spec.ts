@@ -24,7 +24,7 @@ describe('TicketService', () => {
     authService = jasmine.createSpyObj('authService', ['getToken']);
     authService.getToken.and.returnValue(testToken);
     ticketService = new TicketService(http, localStorageService, authService);
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Authorization', 'Bearer ' + testToken);
     requestOptions =  new RequestOptions({headers: headers});
   });
