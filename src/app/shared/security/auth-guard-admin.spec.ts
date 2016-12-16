@@ -24,12 +24,6 @@ describe('AuthGuardAdmin', () => {
     expect(authService.hasRole).toHaveBeenCalledWith('ADMIN');
   });
 
-  it('not logged in should route to login', () => {
-    authService.isLoggedIn.and.returnValue(false);
-    authGuardAdmin.canActivate();
-    expect(router.navigate).toHaveBeenCalledWith(['login']);
-  });
-
   it('logged in but have incorrect role should return false', () => {
     authService.isLoggedIn.and.returnValue(true);
     authService.hasRole.and.callFake(function(role) {
