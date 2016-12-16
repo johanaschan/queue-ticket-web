@@ -13,7 +13,7 @@ export class LoginComponent {
   password: string;
   token: string;
   errorMessage: string;
-  errorMessageExist : boolean = false;
+  errorMessageExist: boolean = false;
 
 
   constructor(private authService: AuthService, private router: Router) {
@@ -26,7 +26,7 @@ export class LoginComponent {
         this.errorMessageExist = false;
         this.router.navigate(['main']);
       },
-      error => { this.errorMessage = error; this.errorMessageExist = true;}
+      error => { this.errorMessage = error; this.errorMessageExist = true; }
     );
   }
 }
