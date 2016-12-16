@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main';
 import { AdminComponent } from './admin';
 import { CustomerComponent } from './customer';
+import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { CurrentTicketComponent } from './shared/current-ticket';
 import { PrettyTimePipe } from './shared/pipes';
@@ -21,6 +22,7 @@ import { routing, appRoutingProviders }  from './app.routing';
     MainComponent,
     AdminComponent,
     CustomerComponent,
+    HomeComponent,
     LoginComponent,
     CurrentTicketComponent,
     PrettyTimePipe,
