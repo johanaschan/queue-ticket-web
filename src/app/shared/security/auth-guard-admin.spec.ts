@@ -9,10 +9,7 @@ describe('AuthGuardAdmin', () => {
   beforeEach(() => {
     authService = jasmine.createSpyObj('authService', ['isLoggedIn', 'hasRole']);
     authService.hasRole.and.callFake(function(role) {
-      if (role === 'ADMIN') {
-        return true;
-      };
-      return false;
+      return role === 'ADMIN';
     });
     router = jasmine.createSpyObj('router', ['navigate']);
     authGuardAdmin = new AuthGuardAdmin(authService, router);
@@ -27,10 +24,7 @@ describe('AuthGuardAdmin', () => {
   it('logged in but have incorrect role should return false', () => {
     authService.isLoggedIn.and.returnValue(true);
     authService.hasRole.and.callFake(function(role) {
-      if (role === 'otherRole') {
-        return true;
-      };
-      return false;
+      return role === 'otherRole';
     });
     expect(authGuardAdmin.canActivate()).toBe(false);
     expect(authService.hasRole).toHaveBeenCalledWith('ADMIN');

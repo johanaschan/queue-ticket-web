@@ -16,7 +16,4 @@ export class UserService extends HttpBaseService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-
-
-
 }

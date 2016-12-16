@@ -10,8 +10,17 @@ export class AuthGuardLoggedIn extends AuthGuardLoggedInBase {
     super(authService, router);
   }
 
+<<<<<<< HEAD
    hasCorrectRole(): boolean {
     return true;
+=======
+  canActivate() {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    } else {
+      this.router.navigate(['login']);
+    }
+>>>>>>> fbacd85e1169b0eb000c807dde6a6d557fac473f
   }
 
 }

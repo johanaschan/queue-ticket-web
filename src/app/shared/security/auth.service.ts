@@ -16,21 +16,22 @@ export class AuthService {
     const subject = new Subject<string>();
     this.userService.login(username, password).subscribe(
       response => {
-        subject.next('Sucess');
         this.loggedIn = true;
         this.setToken((response as any).token);
         this.decodeAndSetRoles((response as any).token);
+        subject.next('SUCCESS');
+        subject.complete();
       },
       error => subject.error(error)
     );
     return subject;
   }
-  decodeAndSetRoles(token: string) {
 
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace('-', '+').replace('_', '/');
-    let decoded = atob(base64);
-    let tokenObject: any = JSON.parse(decoded);
+  decodeAndSetRoles(token: string) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    const decoded = atob(base64);
+    const tokenObject: any = JSON.parse(decoded);
     this.roles = tokenObject.roles.split(',');
   }
 
