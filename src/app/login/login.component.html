@@ -9,8 +9,10 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password">
       </div>
-      <button type="submit" class="btn btn-primary login" (click)="login()">Login</button>
-      <p *ngIf="errorMessageExist" class="alert alert-danger">Incorrect username or password</p>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary login" (click)="login()">Login</button>
+        <p *ngIf="errorMessageExist" class="alert alert-danger" style="float: right">Incorrect username or password</p>
+      </div>
     </form>
   </div>
 </div>

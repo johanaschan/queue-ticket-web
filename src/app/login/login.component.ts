@@ -26,7 +26,7 @@ export class LoginComponent {
         this.errorMessageExist = false;
         this.router.navigate(['main']);
       },
-      error => { debugger; this.errorMessage = error; this.errorMessageExist = true;}
+      error => { this.errorMessage = error; this.errorMessageExist = true;}
     );
   }
 }
