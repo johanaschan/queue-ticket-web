@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
+import { AuthGuardLoggedInBase } from './auth-guard-logged-in-base';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthGuardAdmin implements CanActivate {
+export class AuthGuardAdmin extends AuthGuardLoggedInBase {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(authService: AuthService, router: Router) {
+    super(authService, router);
   }
 
-  canActivate() {
-    if (this.authService.isLoggedIn()) {
+  hasCorrectRole(): boolean {
       return this.authService.hasRole('ADMIN');
-    } else {
-      this.router.navigate(['login']);
-    }
   }
 }

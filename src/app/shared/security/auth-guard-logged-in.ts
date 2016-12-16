@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
+import { AuthGuardLoggedInBase } from './auth-guard-logged-in-base';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthGuardLoggedIn implements CanActivate {
+export class AuthGuardLoggedIn extends AuthGuardLoggedInBase {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(authService: AuthService, router: Router) {
+    super(authService, router);
   }
 
-    canActivate() {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    } else {
-      this.router.navigate(['login']);
-    }
+   hasCorrectRole(): boolean {
+    return true;
   }
+
 }
