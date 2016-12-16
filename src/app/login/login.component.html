@@ -10,6 +10,7 @@
         <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password">
       </div>
       <button type="submit" class="btn btn-primary login" (click)="login()">Login</button>
+      <p *ngIf="errorMessageExist" class="alert alert-danger">Incorrect username or password</p>
     </form>
   </div>
 </div>

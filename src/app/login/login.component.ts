@@ -13,6 +13,8 @@ export class LoginComponent {
   password: string;
   token: string;
   errorMessage: string;
+  errorMessageExist : boolean = false;
+
 
   constructor(private authService: AuthService, private router: Router) {
     this.router = router;
@@ -21,9 +23,10 @@ export class LoginComponent {
   login() {
     this.authService.login(this.username, this.password).subscribe(
       response => {
+        this.errorMessageExist = false;
         this.router.navigate(['main']);
       },
-      error => console.log(error)
+      error => { debugger; this.errorMessage = error; this.errorMessageExist = true;}
     );
   }
 }
