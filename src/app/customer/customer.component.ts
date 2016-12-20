@@ -6,13 +6,13 @@ import { TicketService, WebsocketService } from '../shared/services';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: 'customer.component.html',
-  styleUrls: ['customer.component.css']
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit, OnDestroy {
 
-  private ticket: Ticket;
-  private ticketStatus: TicketStatus;
+  ticket: Ticket;
+  ticketStatus: TicketStatus;
   private subscription: Subscription;
 
   constructor(private ticketService: TicketService, private websocketService: WebsocketService) {

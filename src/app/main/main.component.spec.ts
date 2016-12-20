@@ -3,7 +3,7 @@ import { MainComponent } from './main.component';
 import { AuthService } from '../shared/security';
 import { Component } from '@angular/core';
 
-// tslint:disable-next-line:component-selector-prefix
+// tslint:disable-next-line:component-selector
 @Component({selector: 'router-outlet', template: ''})
 class RouterOutletStubComponent {
 }

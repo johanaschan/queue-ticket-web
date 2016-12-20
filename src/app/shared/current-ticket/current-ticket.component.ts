@@ -6,8 +6,8 @@ import { TicketService, WebsocketService } from '../services';
 
 @Component({
   selector: 'app-current-ticket',
-  templateUrl: 'current-ticket.component.html',
-  styleUrls: ['current-ticket.component.css']
+  templateUrl: './current-ticket.component.html',
+  styleUrls: ['./current-ticket.component.css']
 })
 export class CurrentTicketComponent implements OnInit, OnDestroy {
 
