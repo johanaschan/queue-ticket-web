@@ -1,5 +1,5 @@
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http, Response } from '@angular/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import { Ticket, TicketStatus } from '../.';
 import { LocalStorageService } from './local-storage.service';
@@ -71,7 +72,7 @@ export class TicketService extends HttpBaseService {
   }
 
   customerTicket(): Observable<Ticket> {
-    let ticket = this.localStorageService.getCustomerTicket();
+    const ticket = this.localStorageService.getCustomerTicket();
     const subject = new Subject<Ticket>();
     if (ticket != null) {
       this.version().subscribe(

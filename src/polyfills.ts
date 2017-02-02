@@ -20,6 +20,7 @@ import 'zone.js/dist/zone';
 
 // Statics
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/empty';
 
 // Operators
 import 'rxjs/add/operator/catch';

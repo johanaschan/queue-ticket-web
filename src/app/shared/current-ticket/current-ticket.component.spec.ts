@@ -2,7 +2,7 @@ import { TestBed, async, fakeAsync, tick, discardPeriodicTasks } from '@angular/
 import { CurrentTicketComponent } from './';
 import { TicketService, WebsocketService } from '../services';
 import { Ticket } from '../';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 const queueTicketNumber = 100;
 const size = 2;

@@ -1,5 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { Response, ResponseOptions } from '@angular/http';

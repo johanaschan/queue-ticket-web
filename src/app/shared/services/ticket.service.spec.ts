@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { TicketService } from './.';
 import { Ticket } from '../.';
@@ -11,8 +11,8 @@ describe('TicketService', () => {
   let http;
   let localStorageService;
   let authService;
-  let testToken = 'testToken';
   let requestOptions;
+  const testToken = 'testToken';
 
   beforeEach(() => {
     http = jasmine.createSpyObj('http', ['get', 'delete', 'post']);

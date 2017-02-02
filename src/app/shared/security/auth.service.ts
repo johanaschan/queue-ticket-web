@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
-import { Observable, Subject} from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
 
   private roles: Array<string>;
   private token: string;
-  private loggedIn: boolean = false;
+  private loggedIn = false;
 
   constructor(private userService: UserService) {
   }

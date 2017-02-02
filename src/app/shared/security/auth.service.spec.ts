@@ -1,5 +1,5 @@
 import { AuthService } from './';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 describe('AuthService', () => {
 
@@ -9,7 +9,7 @@ describe('AuthService', () => {
   let authService;
 
   beforeEach(() => {
-    let userService = jasmine.createSpyObj('userService', ['login']);
+    const userService = jasmine.createSpyObj('userService', ['login']);
     userService.login.and.callFake((username, password): any => {
       if (username === 'username' && password === 'password') {
         return Observable.of({token: token});
