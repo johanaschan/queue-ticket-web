@@ -18,7 +18,7 @@ export abstract class HttpBaseService {
     return data;
   }
 
-  handleError(error: any): ErrorObservable<any> {
+  handleError(error: any): ErrorObservable {
     const errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead
