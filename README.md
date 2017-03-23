@@ -4,7 +4,7 @@
 
 # QueueTicketWeb
 
-Webapp for QueueTicket communicating with [QueueTicketApi](https://github.com/johanaschan/queue-ticket-api), deployed at [Github Pages](https://johanaschan.github.io/queue-ticket-web/). This project was generated with [angular-cli](https://github.com/angular/angular-cli).
+Webapp for QueueTicket built with Angular 2 communicating with [QueueTicketApi](https://github.com/johanaschan/queue-ticket-api), deployed at [Github Pages](https://johanaschan.github.io/queue-ticket-web/). This project was generated with [angular-cli](https://github.com/angular/angular-cli).
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
