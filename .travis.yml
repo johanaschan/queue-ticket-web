@@ -30,4 +30,4 @@ after_success:
   - git config --global user.name "Travis"
   - git remote set-url origin "git@github.com:johanaschan/queue-ticket-web.git"
   - git push --delete origin gh-pages
-  - ng github-pages:deploy
+  - npm run deploy
