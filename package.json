@@ -11,7 +11,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng lint && ng test --watch=false",
+    "test": "ng lint && ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build -prod -sm -ec -bh /queue-ticket-web/ && gh-pages -d dist"
