@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
     "@types/sockjs-client": "^1.0.30",
-    "bootstrap": "~>4.1.2",
+    "bootstrap": ">=4.3.1",
     "core-js": "^2.4.1",
     "pretty-ms": "^2.1.0",
     "rxjs": "^5.1.0",
