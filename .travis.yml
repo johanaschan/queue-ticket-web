@@ -14,18 +14,8 @@ notifications:
   slack:
     secure: 3NgG9kZgBhCQCOEKEpy4mULBYrzg0piJTgTzZv0a5twy5jB4m71EKp/YS2whpNB4R09X/RN5kVMoffgsJHn+RkZpOkZqLML3vKbjVPXwiLQ6BjI4VWD6WkBU85z1bNIkUWmav3zmuG5Sjg3jD//nP4/2sMlL9A30K2SOcDEbGaGUnTN6Hd4WsqTtg6vL2Qxw9h3zz7xqjqnpxDhH953fxbiGU+NOfVjRMx2BCtJc0W/kY5GwXHUZdlv2zbRhyPUxBC6ay5ydKgSQLy4wJtjbx8Qc3G0u312maIqoaY21M1yF91dAcbFTJM9c1kGHlj90xtjNizLjCdcQhaBzlgTLLB8RnXHWcdfpmwH2zXnjgc9Nu2eyvxEC/DHJWC9BfOR+B3ZtP19Wwh1Clnhmd+SfAeCTq97ySdaGx316NA+C9I/n0cQjvZpEAbLbd5g040hDiERpYuM8bcmTnmhGRxWOzAASGJHBmD4N3rCIuvfunzooBCq4ibBhfXW2wN0oSLcoB5cL/5+NLnjWYwe3/Xe8mY/7uyx4WTTVHp9YxrxfDgqkaYKV/U28YSyvRJccn0ygyWQwBXtwAl2+5KOafMTgGql2XRpecdlIBGlEFMnW+IUMhpTKpOdiPfpssgIAJHsbOu9LRd2x9yPTnlLRdEo7XYf47qZA1DPA1MZtWZIm8qU=
 
-before_install:
-  - openssl aes-256-cbc -K $encrypted_d81357c35ba2_key -iv $encrypted_d81357c35ba2_iv -in deploy_rsa.enc -out deploy_rsa -d
-
 after_success:
   - bash <(curl -s https://codecov.io/bash) -Z
-  - eval "$(ssh-agent -s)"
-  - chmod 600 deploy_rsa
-  - ssh-add deploy_rsa
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis"
-  - git remote set-url origin "git@github.com:johanaschan/queue-ticket-web.git"
-  - git push --delete origin gh-pages
   - npm run build-prod
 
 deploy:
