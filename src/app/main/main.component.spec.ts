@@ -12,10 +12,7 @@ class RouterOutletStubComponent {
 class AuthServiceStub {
 
   hasRole(role: string): boolean {
-    if (role === 'role') {
-      return true;
-    }
-      return false;
+    return role === 'role';
   }
 
 }
