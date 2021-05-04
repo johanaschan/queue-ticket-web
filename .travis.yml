@@ -1,14 +1,14 @@
 dist: xenial
 services:
   - xvfb
-  
+
 addons:
   chrome: stable
 
 language: node_js
 
 node_js:
-  - '6'
+  - '14'
 
 notifications:
   slack:
