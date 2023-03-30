@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/johanaschan/queue-ticket-web.svg?branch=master)](https://travis-ci.org/johanaschan/queue-ticket-web)
 [![codecov](https://codecov.io/gh/johanaschan/queue-ticket-web/branch/master/graph/badge.svg)](https://codecov.io/gh/johanaschan/queue-ticket-web)
 
 # QueueTicketWeb
